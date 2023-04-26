@@ -36,7 +36,22 @@ header{
     background-color: var(--rich-black);
     border-radius: 0 0 1em 1em;
 }
-#add-character-dialog-button{
+/* ========== nav ========== */
+nav{
+    position: fixed;
+    top: 5em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: lime;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--rich-black);
+    border-radius: 0 0 1em 1em;
+}
+#add-horse-dialog-button{
     cursor: pointer;
     border-top: 2px solid var(--rich-black);
     border-right: 2px solid var(--rich-black);
