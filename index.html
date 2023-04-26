@@ -15,8 +15,16 @@
     </header>
     <nav>
         <div>
-            <label for="searchBar">Search by name/race/color</label>
-            <input type="search" id="searchBar" name="search" placeholder="Name/Race/Color">
+            <label for="searchBar">Search</label>
+            <input type="search" id="searchBar" name="searchBar" placeholder="Name/Race/Color">
+        </div>
+        <div>
+            <label for="sortBy">Sort by:</label>
+            <select name="sortBy" id="sortBy">
+                <option value="name">Name</option>
+                <option value="likes">Likes</option>
+                <option value="race">Race</option>
+            </select>
         </div>
     </nav>
     <button id="add-horse-dialog-button">
@@ -24,6 +32,27 @@
     </button>
     <main>
         <section id="horseGrid" class=".grid-container"></section>
+        <!-- ========== CREATE FORM ========== -->
+        <!--todo add create dialog/form here-->
+
+        <!-- ========== UPDATE FORM ========== -->
+        <!--todo add update dialog/form here-->
+
+        <!-- ========== DELETE FORM ========== -->
+        <!--todo add delete dialog/form here-->
+
+        <!-- ========== DETAIL DIALOG ========== -->
+        <!--todo add detail dialog here-->
+
+        <!-- ========== SUCCESS DIALOGS ========== -->
+        <!--todo add create success message dialog here-->
+        <!--todo add update success message dialog here-->
+        <!--todo add delete success message dialog here-->
+
+        <!-- ========== ERROR DIALOGS ========== -->
+        <!--todo add create error message dialog here-->
+        <!--todo add update error message dialog here-->
+        <!--todo add delete error message dialog here-->
     </main>
     <footer>
         <p>By Asbjørn, Ziggy, Daniel og Emil</p>

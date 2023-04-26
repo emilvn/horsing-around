@@ -1,149 +1,55 @@
 /* ========== general ========== */
-:root{
-    --rich-black: #11151C;
-    --almost-black: rgb(10, 10, 10);
-    --charcoal: #212D40;
-    --opague-lime: rgba(0, 255, 0, 0.482);
-}
+/*:root{
+}*/
 html{
     width: 100%;
     height: 100%;
 }
 body{
     margin: 0;
-    background-color: var(--almost-black);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .hidden{
     display: none;
 }
-.value-error{
-    color: red;
-}
 
 /* ========== header ========== */
-header{
+header, nav{
+    background-color: darkgray;
     position: fixed;
+    width: 100%;
+    text-align: center;
+    z-index: 999;
+}
+header{
     top: 0;
     left: 0;
-    width: 100%;
-    text-align: center;
-    color: lime;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--rich-black);
-    border-radius: 0 0 1em 1em;
+}
+nav{
+    top:5em;
+    left:0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 /* ========== nav ========== */
-nav{
-    position: fixed;
-    top: 5em;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: lime;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--rich-black);
-    border-radius: 0 0 1em 1em;
-}
 #add-horse-dialog-button{
     cursor: pointer;
-    border-top: 2px solid var(--rich-black);
-    border-right: 2px solid var(--rich-black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     bottom: 0;
     right: 0;
     z-index: 999;
-    background-color: lime;
-    color: var(--rich-black);
     height: 2em;
-    border-radius: 0.5em;
     font-size: 1.5em;
 }
-#add-character-dialog-button:hover{
-    background-color: green;
-}
-#add-character-dialog-button h3{
-    margin: 0 1em 0 1em;
-}
 
-/* ========== create/update dialogs ========== */
-dialog{
-    background-color: var(--charcoal);
-    color: lime;
-    border: none;
-    padding: 2em;
-    border-radius: 1em;
-    z-index: 1;
-}
-dialog header{
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-}
-dialog header h1{
-    display: block;
-    grid-column: 2/3;
-}
-dialog header div{
-    border-left: 1px solid black;
-    cursor: pointer;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-dialog form{
-    margin-top: 5em;
-}
-dialog legend{
-    font-weight: bold;
-}
-dialog header div:hover{
-    background-color: var(--charcoal);
-}
-dialog label{
-    font-style: italic;
-}
-dialog div{
-    margin: 0 1em 0 1em;
-}
-dialog input{
-    background-color: var(--almost-black);
-    border-radius: 0.5em;
-    margin: 0.5em 0 0.5em 0;
-    color: white;
-}
-.form-button{
-    margin-top: 1em;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-}
-.form-button input{
-    background-color: var(--rich-black);
-    color: lime;
-    line-height: 2em;
-    width: 10em;
-    margin: 0 1em 0 1em;
-    cursor: pointer;
-}
-.form-button input:hover{
-    background-color: var(--almost-black);
-}
-fieldset{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
+/* ========== dialogs ========== */
+/* todo add dialog styling */
+
+/* ========== forms ========== */
+/* todo add form styling */
+
 /* ========== grid ========== */
-.character-grid{
+.grid-container{
     margin: 1em;
     display: grid;
     grid-template-columns: 1fr;
@@ -154,125 +60,68 @@ fieldset{
     grid-template-columns: 1fr;
 }
 @media (min-width: 600px) {
-    .character-grid{
+    .grid-container{
         grid-template-columns: repeat(2, 1fr);
-    }
-    #dialog-grid{
-        grid-template-columns: 2fr 1fr;
     }
 }
 @media (min-width: 900px) {
-    .character-grid{
+    .grid-container{
         grid-template-columns: repeat(3, 1fr);
     }
 }
 @media (min-width: 1200px) {
-    .character-grid{
+    .grid-container{
         grid-template-columns: repeat(4, 1fr);
     }
 }
 @media (min-width: 1500px) {
-    .character-grid{
+    .grid-container{
         grid-template-columns: repeat(5, 1fr);
     }
 }
 @media (min-width: 1800px) {
-    .character-grid{
+    .grid-container{
         grid-template-columns: repeat(6, 1fr);
     }
 }
 @media (min-width: 2100px) {
-    .character-grid{
+    .grid-container{
         grid-template-columns: repeat(7, 1fr);
     }
 }
 
-/* ========== characters ========== */
-#characters{
+/* ========== grid item styling ========== */
+#horseGrid{
     margin-top: 6em;
 }
-#characters article{
-    background-color: var(--charcoal);
-    color: lime;
+#horseGrid article{
     border-radius: 1em;
     padding: 1em;
-    box-shadow: 0 0 10px 0 var(--opague-lime);
+    box-shadow: 0 0 10px 0 black;
     cursor: pointer;
     position: relative;
-    display: grid;
-    grid-template-rows: 400px 50px;
 }
-#characters article:hover{
-    box-shadow: 0 0 10px 5px var(--opague-lime);
+#horseGrid article:hover{
+    box-shadow: 0 0 10px 5px black;
 }
-#characters article figure{
+#horseGrid article figure{
     height: 200px;
     overflow: hidden;
 }
-#characters article img{
+#horseGrid article img{
     width: 100%;
     height: 200px;
     object-fit: contain;
 }
-#characters article h2{
-    text-shadow: 2px 2px 2px var(--rich-black);
-}
-#characters article div:last-child{
-    text-align: center;
-}
-#characters article p{
-    color: lime;
-    text-shadow: 0 0 1px white;
+#horseGrid article button{
+    cursor: pointer;
 }
 
-#characters article button{
-    background-color: var(--rich-black);
-    color: lime;
-    border-radius: 0.5em;
-    cursor: pointer;
-    width: 5em;
-    height: 2em;
-}
-#characters article button:hover{
-    background-color: var(--almost-black);
-}
-
-/* ========== Character detail dialog ========== */
-#detail-dialog{
-    width: 75vw;
-    height: 75vh;
-    overflow: hidden;
-    background-color: var(--rich-black);
-    border: 1px solid lime;
-    color: lime;
-    border-radius: 1em;
-}
-#detail-dialog img{
-    width: 100%;
-    object-fit: contain;
-    height: 50vh;
-}
-#detail-dialog form{
-    text-align: center;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-}
-#detail-dialog button{
-    background-color: lime;
-    color: var(--rich-black);
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-size: 1.5em;
-}
-#detail-dialog button:hover{
-    background-color: green;
-}
+/* ========== detail dialog ========== */
+/* todo: add detail dialog styling here */
 
 /* ========== footer ========== */
 footer{
     text-align: center;
-    background-color: var(--rich-black);
-    color: var(--opague-lime);
     font-size: 0.75em;
 }
