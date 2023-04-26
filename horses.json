@@ -1,0 +1,441 @@
+{
+  "horses": {
+    "horse_1": {
+      "name": "Misty",
+      "race": "Arabian",
+      "likes": [
+        "carrots",
+        "running",
+        "being groomed"
+      ],
+      "height": 14.3,
+      "gender": "female",
+      "hasTapeworm": false,
+      "age": 10,
+      "color": "grey",
+      "temperament": "spirited",
+      "riderExperienceRequired": true,
+      "registered": true,
+      "vaccinations": [
+        "tetanus",
+        "influenza"
+      ],
+      "diet": [
+        "hay",
+        "oats"
+      ],
+      "trainingLevel": "advanced",
+      "owner": {
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "phone": "555-5678"
+      },
+      "topspeed": 35
+    },
+    "horse_2": {
+      "name": "Blackjack",
+      "race": "Quarter Horse",
+      "likes": [
+        "apples",
+        "trail rides"
+      ],
+      "height": 15.2,
+      "gender": "male",
+      "hasTapeworm": true,
+      "age": 8,
+      "color": "black",
+      "temperament": "calm",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": [
+        "tetanus",
+        "rabies",
+        "influenza"
+      ],
+      "diet": [
+        "hay",
+        "grain"
+      ],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Mary Johnson",
+        "email": "maryj@example.com",
+        "phone": "555-1234"
+      },
+      "topspeed": 40
+    },
+    "horse_3": {
+      "name": "Buddy",
+      "race": "Appaloosa",
+      "likes": [
+        "carrots",
+        "being brushed",
+        "trail rides"
+      ],
+      "height": 15.1,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 7,
+      "color": "chestnut",
+      "temperament": "friendly",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": [
+        "tetanus",
+        "rabies"
+      ],
+      "diet": [
+        "hay",
+        "oats"
+      ],
+      "trainingLevel": "beginner",
+      "owner": {
+        "name": "Tom Smith",
+        "email": "tomsmith@example.com",
+        "phone": "555-7890"
+      },
+      "topspeed": 30
+    },
+    "horse_5": {
+      "name": "Spirit",
+      "race": "Mustang",
+      "likes": ["carrots", "trail rides"],
+      "height": 14.2,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 5,
+      "color": "black",
+      "temperament": "wild",
+      "riderExperienceRequired": true,
+      "registered": false,
+      "vaccinations": ["none"],
+      "diet": ["grass"],
+      "trainingLevel": "untrained",
+      "owner": {
+        "name": "Mark Thompson",
+        "email": "markt@example.com",
+        "phone": "555-4321"
+      },
+      "topspeed": 25
+    },
+    "horse_6": {
+      "name": "Daisy",
+      "race": "Morgan",
+      "likes": ["apples", "being groomed", "dressage"],
+      "height": 15.1,
+      "gender": "female",
+      "hasTapeworm": false,
+      "age": 6,
+      "color": "bay",
+      "temperament": "calm",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "influenza"],
+      "diet": ["hay", "grain"],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Rachel Kim",
+        "email": "rachelk@example.com",
+        "phone": "555-7890"
+      },
+      "topspeed": 35
+    },
+    "horse_7": {
+      "name": "Gatsby",
+      "race": "Friesian",
+      "likes": ["carrots", "trail rides"],
+      "height": 16.2,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 4,
+      "color": "black",
+      "temperament": "energetic",
+      "riderExperienceRequired": true,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "influenza"],
+      "diet": ["hay", "oats"],
+      "trainingLevel": "advanced",
+      "owner": {
+        "name": "Emily Chen",
+        "email": "emilyc@example.com",
+        "phone": "555-2468"
+      },
+      "topspeed": 45
+    },
+    "horse_8": {
+      "name": "Bella",
+      "race": "Quarter Horse",
+      "likes": ["peppermints", "barrel racing"],
+      "height": 14.3,
+      "gender": "female",
+      "hasTapeworm": true,
+      "age": 10,
+      "color": "sorrel",
+      "temperament": "spirited",
+      "riderExperienceRequired": true,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "west nile"],
+      "diet": ["alfalfa", "grain"],
+      "trainingLevel": "advanced",
+      "owner": {
+        "name": "John Smith",
+        "email": "johns@example.com",
+        "phone": "555-1234"
+      },
+      "topspeed": 40
+    },
+    "horse_9": {
+      "name": "Midnight",
+      "race": "Arabian",
+      "likes": ["carrots", "endurance riding"],
+      "height": 15.1,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 8,
+      "color": "black",
+      "temperament": "calm",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "eastern/western encephalomyelitis"],
+      "diet": ["hay", "beet pulp"],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Sarah Lee",
+        "email": "sarahlee@example.com",
+        "phone": "555-5678"
+      },
+      "topspeed": 30
+    },
+    "horse_10": {
+      "name": "Zeus",
+      "race": "Percheron",
+      "likes": ["apples", "pulling carts"],
+      "height": 17.2,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 12,
+      "color": "gray",
+      "temperament": "gentle",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "influenza"],
+      "diet": ["hay", "oats"],
+      "trainingLevel": "basic",
+      "owner": {
+        "name": "Michael Johnson",
+        "email": "michaelj@example.com",
+        "phone": "555-2468"
+      },
+      "topspeed": 25
+    },
+    "horse_11": {
+      "name": "Ruby",
+      "race": "Thoroughbred",
+      "likes": ["oats", "jumping"],
+      "height": 16.1,
+      "gender": "female",
+      "hasTapeworm": false,
+      "age": 6,
+      "color": "chestnut",
+      "temperament": "energetic",
+      "riderExperienceRequired": true,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "strangles"],
+      "diet": ["hay", "grain"],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Emily Rodriguez",
+        "email": "emilyr@example.com",
+        "phone": "555-7890"
+      },
+      "topspeed": 45
+    },
+    "horse_12": {
+      "name": "Apollo",
+      "race": "Andalusian",
+      "likes": ["carrots", "dressage"],
+      "height": 15.3,
+      "gender": "male",
+      "hasTapeworm": true,
+      "age": 9,
+      "color": "gray",
+      "temperament": "calm",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "west nile"],
+      "diet": ["hay", "beet pulp", "oats"],
+      "trainingLevel": "advanced",
+      "owner": {
+        "name": "Mark Brown",
+        "email": "markb@example.com",
+        "phone": "555-4321"
+      },
+      "topspeed": 35
+    },
+    "horse_13": {
+      "name": "Luna",
+      "race": "Friesian",
+      "likes": ["apples", "trail riding"],
+      "height": 16.2,
+      "gender": "female",
+      "hasTapeworm": false,
+      "age": 7,
+      "color": "black",
+      "temperament": "gentle",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "eastern/western encephalomyelitis"],
+      "diet": ["hay", "oats"],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Samantha Lee",
+        "email": "samanthal@example.com",
+        "phone": "555-5555"
+      },
+      "topspeed": 30
+    },
+    "horse_14": {
+      "name": "Duke",
+      "race": "Quarter Horse",
+      "likes": ["alfalfa", "barrel racing"],
+      "height": 15.2,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 8,
+      "color": "chestnut",
+      "temperament": "spirited",
+      "riderExperienceRequired": true,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "west nile"],
+      "diet": ["hay", "grain"],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "John Smith",
+        "email": "johnsmith@example.com",
+        "phone": "555-1234"
+      },
+      "topspeed": 40
+    },
+    "horse_15": {
+      "name": "Buddy",
+      "race": "Appaloosa",
+      "likes": ["carrots", "showmanship"],
+      "height": 15.3,
+      "gender": "male",
+      "hasTapeworm": true,
+      "age": 5,
+      "color": "leopard",
+      "temperament": "friendly",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "influenza"],
+      "diet": ["hay", "beet pulp"],
+      "trainingLevel": "beginner",
+      "owner": {
+        "name": "Amy Johnson",
+        "email": "amyj@example.com",
+        "phone": "555-6789"
+      },
+      "topspeed": 35
+    },
+    "horse_16": {
+      "name": "Thunder",
+      "race": "Paint Horse",
+      "likes": ["apples", "trail riding"],
+      "height": 14.3,
+      "gender": "male",
+      "hasTapeworm": false,
+      "age": 10,
+      "color": "black and white",
+      "temperament": "calm",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies"],
+      "diet": ["hay", "grain"],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Sarah Johnson",
+        "email": "sarahj@example.com",
+        "phone": "555-1111"
+      },
+      "topspeed": 30
+    },
+    "horse_17": {
+      "name": "Midnight",
+      "race": "Friesian",
+      "likes": ["carrots", "dressage"],
+      "height": 16.2,
+      "gender": "female",
+      "hasTapeworm": false,
+      "age": 7,
+      "color": "black",
+      "temperament": "eager",
+      "riderExperienceRequired": true,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies", "west nile"],
+      "diet": ["hay", "grain", "supplements"],
+      "trainingLevel": "advanced",
+      "owner": {
+        "name": "Jennifer Lee",
+        "email": "jenniferlee@example.com",
+        "phone": "555-1234"
+      },
+      "topspeed": 35
+    },
+    "horse_18": {
+      "name": "Buttercup",
+      "race": "Welsh Pony",
+      "likes": ["apples", "jumping"],
+      "height": 12.2,
+      "gender": "female",
+      "hasTapeworm": true,
+      "age": 9,
+      "color": "palomino",
+      "temperament": "playful",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": ["tetanus", "rabies"],
+      "diet": ["hay", "pellets"],
+      "trainingLevel": "beginner",
+      "owner": {
+        "name": "Emma Johnson",
+        "email": "emmaj@example.com",
+        "phone": "555-6789"
+      },
+      "topspeed": 25
+    },
+    "horse_19": {
+      "name": "Misty",
+      "race": "Arabian",
+      "likes": [
+        "peppermints",
+        "endurance riding"
+      ],
+      "height": 14.1,
+      "gender": "female",
+      "hasTapeworm": false,
+      "age": 6,
+      "color": "grey",
+      "temperament": "calm",
+      "riderExperienceRequired": false,
+      "registered": true,
+      "vaccinations": [
+        "tetanus",
+        "rabies",
+        "influenza"
+      ],
+      "diet": [
+        "hay",
+        "grain",
+        "supplements"
+      ],
+      "trainingLevel": "intermediate",
+      "owner": {
+        "name": "Michael Brown",
+        "email": "michaelbrown@example.com",
+        "phone": "555-1111"
+      },
+      "topspeed": 30
+    }
+  }
+}
