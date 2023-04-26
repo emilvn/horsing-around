@@ -1,6 +1,7 @@
 {
   "horses": {
     "horse_1": {
+      "image": "https://cdn.pixabay.com/photo/2018/07/21/03/55/woman-3551832__480.jpg",
       "name": "Misty",
       "race": "Arabian",
       "likes": [
@@ -33,6 +34,7 @@
       "topspeed": 35
     },
     "horse_2": {
+      "image": "https://cdn.pixabay.com/photo/2017/12/10/15/16/white-horse-3010129__480.jpg",
       "name": "Blackjack",
       "race": "Quarter Horse",
       "likes": [
@@ -65,6 +67,7 @@
       "topspeed": 40
     },
     "horse_3": {
+      "image": "https://cdn.pixabay.com/photo/2014/12/08/17/52/horse-561221__480.jpg",
       "name": "Buddy",
       "race": "Appaloosa",
       "likes": [
@@ -97,6 +100,7 @@
       "topspeed": 30
     },
     "horse_5": {
+      "image": "https://cdn.pixabay.com/photo/2013/10/17/20/59/horse-197199__480.jpg",
       "name": "Spirit",
       "race": "Mustang",
       "likes": ["carrots", "trail rides"],
@@ -119,6 +123,7 @@
       "topspeed": 25
     },
     "horse_6": {
+      "image": "https://cdn.pixabay.com/photo/2016/05/25/13/55/horses-1414889__480.jpg",
       "name": "Daisy",
       "race": "Morgan",
       "likes": ["apples", "being groomed", "dressage"],
@@ -141,6 +146,7 @@
       "topspeed": 35
     },
     "horse_7": {
+      "image": "https://cdn.pixabay.com/photo/2012/10/06/22/18/horse-60153__480.jpg",
       "name": "Gatsby",
       "race": "Friesian",
       "likes": ["carrots", "trail rides"],
@@ -163,6 +169,7 @@
       "topspeed": 45
     },
     "horse_8": {
+      "image": "https://cdn.pixabay.com/photo/2014/08/29/03/02/horses-430441__480.jpg",
       "name": "Bella",
       "race": "Quarter Horse",
       "likes": ["peppermints", "barrel racing"],
@@ -185,6 +192,7 @@
       "topspeed": 40
     },
     "horse_9": {
+      "image": "https://cdn.pixabay.com/photo/2016/04/15/10/35/horse-1330690__480.jpg",
       "name": "Midnight",
       "race": "Arabian",
       "likes": ["carrots", "endurance riding"],
@@ -207,6 +215,7 @@
       "topspeed": 30
     },
     "horse_10": {
+      "image": "https://cdn.pixabay.com/photo/2017/08/01/14/42/knight-2565957__480.jpg",
       "name": "Zeus",
       "race": "Percheron",
       "likes": ["apples", "pulling carts"],
@@ -229,6 +238,7 @@
       "topspeed": 25
     },
     "horse_11": {
+      "image": "https://cdn.pixabay.com/photo/2016/01/12/16/51/white-horse-1136093__480.jpg",
       "name": "Ruby",
       "race": "Thoroughbred",
       "likes": ["oats", "jumping"],
@@ -251,6 +261,7 @@
       "topspeed": 45
     },
     "horse_12": {
+      "image": "https://cdn.pixabay.com/photo/2016/11/06/22/58/horse-1804425__480.jpg",
       "name": "Apollo",
       "race": "Andalusian",
       "likes": ["carrots", "dressage"],
@@ -273,6 +284,7 @@
       "topspeed": 35
     },
     "horse_13": {
+      "image": "https://cdn.pixabay.com/photo/2016/02/15/13/26/horse-1201143__480.jpg",
       "name": "Luna",
       "race": "Friesian",
       "likes": ["apples", "trail riding"],
@@ -295,6 +307,7 @@
       "topspeed": 30
     },
     "horse_14": {
+      "image": "https://cdn.pixabay.com/photo/2014/08/15/22/48/cowgirl-419084__480.jpg",
       "name": "Duke",
       "race": "Quarter Horse",
       "likes": ["alfalfa", "barrel racing"],
@@ -317,6 +330,7 @@
       "topspeed": 40
     },
     "horse_15": {
+      "image": "https://cdn.pixabay.com/photo/2017/02/13/20/21/horse-2063672__480.jpg",
       "name": "Buddy",
       "race": "Appaloosa",
       "likes": ["carrots", "showmanship"],
@@ -339,6 +353,7 @@
       "topspeed": 35
     },
     "horse_16": {
+      "image": "https://cdn.pixabay.com/photo/2017/04/02/19/57/horse-2196755__480.jpg",
       "name": "Thunder",
       "race": "Paint Horse",
       "likes": ["apples", "trail riding"],
@@ -361,6 +376,7 @@
       "topspeed": 30
     },
     "horse_17": {
+      "image": "https://cdn.pixabay.com/photo/2018/05/11/11/11/horse-3390256__480.jpg",
       "name": "Midnight",
       "race": "Friesian",
       "likes": ["carrots", "dressage"],
@@ -383,6 +399,7 @@
       "topspeed": 35
     },
     "horse_18": {
+      "image": "https://cdn.pixabay.com/photo/2018/11/15/22/20/horse-3818264__480.jpg",
       "name": "Buttercup",
       "race": "Welsh Pony",
       "likes": ["apples", "jumping"],
@@ -405,6 +422,7 @@
       "topspeed": 25
     },
     "horse_19": {
+      "image": "https://cdn.pixabay.com/photo/2020/12/16/12/05/horse-5836459__480.jpg",
       "name": "Misty",
       "race": "Arabian",
       "likes": [
