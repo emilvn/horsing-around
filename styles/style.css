@@ -47,9 +47,6 @@ nav{
 
 /* ========== forms ========== */
 /* UPDATE FORM */
-.top{
-    ;
-}
 #update-dialog{
     text-align: center;
     z-index: 9999;
@@ -62,8 +59,13 @@ nav{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-#update-form fieldset input{
+#update-form fieldset input, select, textarea{
     margin: 0.5em;
+}
+#update-buttons{
+    margin: 1em;
+    display: flex;
+    justify-content: space-between;
 }
 /* todo add form styling */
 
