@@ -58,6 +58,33 @@
                             <label for="update-ownerPhone">Phone number:</label>
                             <input type="text" name="ownerPhone" id="update-ownerPhone" placeholder="Phone Number">
                         </fieldset>
+                        <fieldset>
+                            <legend>Good to know</legend>
+                            <label for="update-temperament">Temperament:</label>
+                            <select name="temperament" id="update-temperament">
+                                <option value="spirited">Spirited</option>
+                                <option value="calm">Calm</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="wild">Wild</option>
+                                <option value="energetic">Energetic</option>
+                                <option value="gentle">Gentle</option>
+                                <option value="eager">Eager</option>
+                                <option value="playful">Playful</option>
+                            </select>
+                            <label for="update-trainingLevel">Training level:</label>
+                            <select name="trainingLevel" id="update-trainingLevel">
+                                <option value="advanced">Advanced</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="untrained">Untrained</option>
+                                <option value="basic">Basic</option>
+                            </select>
+                            <label for="update-riderExperienceRequired">Rider experience</label>
+                            <input type="checkbox" name="riderExperienceRequired" id="update-riderExperienceRequired">
+                            <label for="update-registered">Registered</label>
+                            <input type="checkbox" name="registered" id="update-registered">
+
+                        </fieldset>
                     </div>
                     <fieldset>
                         <legend>General Information</legend>
@@ -76,7 +103,28 @@
                             <label for="update-gender-female">Female</label>
                             <input type="radio" name="gender" id="update-gender-female" value="female">
                         </div>
+                        <label for="update-height">Height:</label>
+                        <input type="number" name="height" id="update-height" placeholder="Height in feet">
+                        <label for="update-topspeed">Top speed:</label>
+                        <input type="number" name="topspeed" id="update-topspeed" placeholder="Top speed in mph">
+                    </fieldset>
+                </div>
+                <fieldset>
+                    <legend>Health and Diet</legend>
+                    <label for="update-diet">Preferred Diet:</label>
+                    <textarea name="diet" id="update-diet" cols="10" rows="3" placeholder="Hay, Apples, Carrots,..."></textarea>
+                    <label for="update-vaccinations">Vaccinations:</label>
+                    <textarea name="diet" id="update-vaccinations" cols="10" rows="3" placeholder="Rabies, Tetanus, Influenza,..."></textarea>
+                    <div></div>
+                    <div>
+                        <input type="checkbox" name="hasTapeworm" id="update-hasTapeworm">
+                        <label for="update-hasTapeworm">Has tapeworm</label>
+                    </div>
                 </fieldset>
+                <div id="update-buttons">
+                    <button id="update-submit-btn">Submit</button>
+                    <button type="reset">Clear form</button>
+                    <button type="button" id="update-cancel-btn">Cancel</button>
                 </div>
             </form>
         </dialog>
