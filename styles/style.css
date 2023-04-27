@@ -46,6 +46,25 @@ nav{
 /* todo add dialog styling */
 
 /* ========== forms ========== */
+/* UPDATE FORM */
+.top{
+    ;
+}
+#update-dialog{
+    text-align: center;
+    z-index: 9999;
+}
+.side-by-side{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#update-form fieldset{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#update-form fieldset input{
+    margin: 0.5em;
+}
 /* todo add form styling */
 
 /* ========== grid ========== */

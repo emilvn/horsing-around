@@ -37,9 +37,47 @@
 
         <!-- ========== UPDATE FORM ========== -->
         <!--todo add update dialog/form here-->
-        <dialog id="update-dialog">
+        <dialog id="update-dialog" open>
+            <h2>Update Horse</h2>
             <form action="" id="update-form">
-
+                <label for="update-id"></label>
+                <input type="hidden" name="id" id="update-id">
+                <fieldset>
+                    <legend>Image</legend>
+                    <label for="update-image">Image URL:*</label>
+                    <input type="url" name="image" id="update-image" placeholder="Image URL" required>
+                </fieldset>
+                <div class="side-by-side">
+                    <div>
+                        <fieldset>
+                            <legend>Owner Information</legend>
+                            <label for="update-ownerName">Name:*</label>
+                            <input type="text" name="ownerName" id="update-ownerName" placeholder="Owner Name" required>
+                            <label for="update-ownerEmail">Email:*</label>
+                            <input type="email" name="ownerEmail" id="update-ownerEmail" placeholder="Email" required>
+                            <label for="update-ownerPhone">Phone number:</label>
+                            <input type="text" name="ownerPhone" id="update-ownerPhone" placeholder="Phone Number">
+                        </fieldset>
+                    </div>
+                    <fieldset>
+                        <legend>General Information</legend>
+                        <label for="update-name">Name:*</label>
+                        <input type="text" name="name" id="update-name" placeholder="Name of horse" required>
+                        <label for="update-age">Age:*</label>
+                        <input type="number" name="age" id="update-age" placeholder="Age of horse" required>
+                        <label for="update-race">Race:*</label>
+                        <input type="text" name="race" id="update-race" placeholder="Race of horse" required>
+                        <label for="update-color">Color:</label>
+                        <input type="text" name="color" id="update-color">
+                        <label>Gender:*</label>
+                        <div>
+                            <label for="update-gender-male">Male</label>
+                            <input type="radio" name="gender" id="update-gender-male" value="male" checked>
+                            <label for="update-gender-female">Female</label>
+                            <input type="radio" name="gender" id="update-gender-female" value="female">
+                        </div>
+                </fieldset>
+                </div>
             </form>
         </dialog>
 
