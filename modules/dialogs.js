@@ -70,11 +70,16 @@ function fillUpdateForm(horseObj){
 /* ========== DELETE DIALOG ========== */
 //todo add showDeleteDialog here
 
-/* ========== CREATE SUCCESS DIALOG ========== */
-//todo add showCreateSuccess here
+/* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
+//type is success or error
+export function showToastMessage(message, type){
+    const toastContainer = document.querySelector("#toast-container");
+    const toast = document.createElement("div");
+    toast.textContent = message;
+    toast.classList.add("toast", type);
+    toastContainer.appendChild(toast);
 
-/* ========== UPDATE SUCCESS DIALOG ========== */
-//todo add showUpdateSuccess here
-
-/* ========== DELETE SUCCESS DIALOG ========== */
-//todo add showDeleteSuccess here
+    setTimeout(()=>{
+        toastContainer.removeChild(toast)
+    }, 3000);
+}
