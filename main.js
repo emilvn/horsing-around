@@ -29,9 +29,9 @@ function prepareData(obj) {
 
 /* ========== UPDATE ========== */
 // Sends put request to endpoint with horse object
-export async function updateHorse(horse, endpoint){
+export async function updateHorse(horse, horseID, endpoint){
     try{
-    const response = await fetch(`${endpoint}horses/${horse.id}.json`, {
+    const response = await fetch(`${endpoint}horses/${horseID}.json`, {
         method: "PUT",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify(horse)
