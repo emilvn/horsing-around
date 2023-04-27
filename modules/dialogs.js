@@ -22,6 +22,8 @@ function fillUpdateForm(horseObj){
     const form = document.querySelector("#update-form");
     /* id */
     form.horseId.value = horseObj["id"];
+    /* likes */
+    form.likes.value = horseObj["likes"];
     /* image */
     form.image.value = horseObj["image"];
     /* owner info */
