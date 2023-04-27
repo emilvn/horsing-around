@@ -1,6 +1,9 @@
 "use strict";
 window.addEventListener("load", main);
 
+/* ===== Modules ===== */
+import {showToastMessage} from "./modules/dialogs.js";
+
 /* ===== Global variables ===== */
 export const endpoint = "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -38,6 +41,10 @@ export async function updateHorse(horse, horseID, endpoint){
     });
     if (response.ok){
         console.log("Horse updated successfully!");
+        showToastMessage("Horse updated successfully!", "success");
+    }
+    else{
+        showToastMessage("Failed to update Horse.", "error");
     }
     }
     catch (err){
