@@ -1,16 +1,21 @@
 "use strict";
 
-window.addEventListener("load", main);
-
 /* ===== Modules ===== */
 import { showToastMessage } from "./modules/dialogs.js";
-import {updateGrid} from "./modules/display.js";
+import { updateGrid } from "./modules/display.js";
+import { inputSearchChanged } from "./modules/search.js";
+
+window.addEventListener("load", main);
+
 
 /* ===== Global variables ===== */
 export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function main() {
+  /* Search event listeners */
+  document.querySelector("#searchBar").addEventListener("search", inputSearchChanged);
+  document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);
   //todo call relevant functions
   //todo add relevant event listeners
 }
