@@ -1,8 +1,9 @@
 "use strict";
 
 /* ========== UPDATE GRID VIEW ========== */
-//todo add updateGrid here
-
+export async function updateGrid(){
+    //todo add updateGrid here
+}
 /* ========== SHOW ALL HORSES ========== */
 //todo add showHorses here
 
