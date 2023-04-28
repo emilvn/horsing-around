@@ -1,6 +1,9 @@
 "use strict";
 window.addEventListener("load", main);
 
+/* ===== Modules ===== */
+import {showToastMessage} from "./modules/dialogs.js";
+
 /* ===== Global variables ===== */
 export const endpoint = "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -12,7 +15,7 @@ function main(){
 //todo add addHorse here
 
 
-/* ========== READ ========== */
+/* ========== READ ALL========== */
 //todo add getHorses here
 
 /* ========== Data preparation for getHorses ========== */
@@ -27,17 +30,34 @@ function prepareData(obj) {
     return dataArr;
 }
 
+/* ========== READ ONE ========== */
+export async function getOneHorse(horseID, endpoint){
+    try{
+        const response = await fetch(`${endpoint}horses/${horseID}.json`);
+        if(response.ok){
+            return await response.json();
+        }
+    }
+    catch (err){
+        throw new Error(`Error at getOneHorse: ${err}`);
+    }
+}
+
 /* ========== UPDATE ========== */
 // Sends put request to endpoint with horse object
-export async function updateHorse(horse, endpoint){
+export async function updateHorse(horse, horseID, endpoint){
     try{
-    const response = await fetch(`${endpoint}horses/${horse.id}.json`, {
+    const response = await fetch(`${endpoint}horses/${horseID}.json`, {
         method: "PUT",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify(horse)
     });
     if (response.ok){
         console.log("Horse updated successfully!");
+        showToastMessage("Horse updated successfully!", "success");
+    }
+    else{
+        showToastMessage("Failed to update Horse.", "error");
     }
     }
     catch (err){
