@@ -138,6 +138,11 @@ nav{
     cursor: pointer;
 }
 
+#horseGrid .grid-item-btns{
+    display: flex;
+    justify-content: space-between;
+}
+
 /* ========== detail dialog ========== */
 /* todo: add detail dialog styling here */
 
