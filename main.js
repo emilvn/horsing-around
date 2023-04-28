@@ -1,8 +1,10 @@
 "use strict";
+
 window.addEventListener("load", main);
 
 /* ===== Modules ===== */
 import { showToastMessage } from "./modules/dialogs.js";
+import {updateGrid} from "./modules/display.js";
 
 /* ===== Global variables ===== */
 export const endpoint =
