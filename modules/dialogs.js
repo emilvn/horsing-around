@@ -4,6 +4,8 @@
 //todo add showCreateDialog here
 
 /* ========== UPDATE DIALOG ========== */
+import {submitUpdateForm} from "./submit.js";
+
 export function showUpdateDialog(horseObj){
     fillUpdateForm(horseObj);
     const form = document.querySelector("#update-form");
