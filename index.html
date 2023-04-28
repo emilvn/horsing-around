@@ -1,61 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Galop Galore</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2020/09/10/17/42/unicorn-5561072__480.png" type="image/x-icon">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="shortcut icon"
+      href="https://cdn.pixabay.com/photo/2020/09/10/17/42/unicorn-5561072__480.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
     <header>
-        <h1>Galop Galore</h1>
+      <h1>Galop Galore</h1>
     </header>
     <nav>
-        <div>
-            <label for="searchBar">Search</label>
-            <input type="search" id="searchBar" name="searchBar" placeholder="Name/Race/Color">
-        </div>
-        <div>
-            <label for="sortBy">Sort by:</label>
-            <select name="sortBy" id="sortBy">
-                <option value="name">Name</option>
-                <option value="likes">Likes</option>
-                <option value="race">Race</option>
-            </select>
-        </div>
+      <div>
+        <label for="searchBar">Search</label>
+        <input
+          type="search"
+          id="searchBar"
+          name="searchBar"
+          placeholder="Name/Race/Color"
+        />
+      </div>
+      <div>
+        <label for="sortBy">Sort by:</label>
+        <select name="sortBy" id="sortBy">
+          <option value="name">Name</option>
+          <option value="likes">Likes</option>
+          <option value="race">Race</option>
+        </select>
+      </div>
     </nav>
-    <button id="add-horse-dialog-button">
-        Add Horse
-    </button>
+    <button id="add-horse-dialog-button">Add Horse</button>
     <main>
-        <section id="horseGrid" class=".grid-container"></section>
-        <!-- ========== CREATE FORM ========== -->
-        <!--todo add create dialog/form here-->
+      <section id="horseGrid" class=".grid-container"></section>
+      <!-- ========== CREATE FORM ========== -->
+      <!--todo add create dialog/form here-->
 
-        <!-- ========== UPDATE FORM ========== -->
-        <!--todo add update dialog/form here-->
+      <!-- ========== UPDATE FORM ========== -->
+      <!--todo add update dialog/form here-->
 
-        <!-- ========== DELETE FORM ========== -->
-        <!--todo add delete dialog/form here-->
+      <!-- ========== DELETE FORM ========== -->
+      <dialog open id="dialogDeleteForm">
+        <h3>Are you sure you want to delete this horse?</h3>
+        <form id="deleteForm" action="">
+          <label for="passwordVerification">Password:</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Type password to confirm"
+            id="passwordVerification"
+          />
+          <div>
+            <button>Delete</button>
+            <button type="button">Cancel</button>
+          </div>
+        </form>
+      </dialog>
+      <!--todo add delete dialog/form here-->
 
-        <!-- ========== DETAIL DIALOG ========== -->
-        <!--todo add detail dialog here-->
+      <!-- ========== DETAIL DIALOG ========== -->
+      <!--todo add detail dialog here-->
 
-        <!-- ========== SUCCESS DIALOGS ========== -->
-        <!--todo add create success message dialog here-->
-        <!--todo add update success message dialog here-->
-        <!--todo add delete success message dialog here-->
+      <!-- ========== SUCCESS DIALOGS ========== -->
+      <!--todo add create success message dialog here-->
+      <!--todo add update success message dialog here-->
+      <!--todo add delete success message dialog here-->
 
-        <!-- ========== ERROR DIALOGS ========== -->
-        <!--todo add create error message dialog here-->
-        <!--todo add update error message dialog here-->
-        <!--todo add delete error message dialog here-->
+      <!-- ========== ERROR DIALOGS ========== -->
+      <!--todo add create error message dialog here-->
+      <!--todo add update error message dialog here-->
+      <!--todo add delete error message dialog here-->
     </main>
     <footer>
-        <p>By Asbjørn, Ziggy, Daniel og Emil</p>
+      <p>By Asbjørn, Ziggy, Daniel og Emil</p>
     </footer>
     <script type="module" src="./modules/dialogs.js"></script>
     <script type="module" src="./modules/display.js"></script>
@@ -63,5 +88,5 @@
     <script type="module" src="./modules/submit.js"></script>
     <!--Main script-->
     <script type="module" src="main.js"></script>
-</body>
+  </body>
 </html>
