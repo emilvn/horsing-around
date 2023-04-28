@@ -15,7 +15,7 @@ function main(){
 //todo add addHorse here
 
 
-/* ========== READ ========== */
+/* ========== READ ALL========== */
 //todo add getHorses here
 
 /* ========== Data preparation for getHorses ========== */
@@ -28,6 +28,19 @@ function prepareData(obj) {
         dataArr.push(horse);
     }
     return dataArr;
+}
+
+/* ========== READ ONE ========== */
+export async function getOneHorse(horseID, endpoint){
+    try{
+        const response = await fetch(`${endpoint}horses/${horseID}.json`);
+        if(response.ok){
+            return await response.json();
+        }
+    }
+    catch (err){
+        throw new Error(`Error at getOneHorse: ${err}`);
+    }
 }
 
 /* ========== UPDATE ========== */
