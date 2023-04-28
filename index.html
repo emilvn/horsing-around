@@ -162,19 +162,63 @@
 
       <!-- ========== DETAIL DIALOG ========== -->
       <dialog id="detail-dialog" open>
-        <article id="dialog-grid">
-          <div id="detail-name-div">
-            <h2 class="horse-info"><span id="detail-name">Test name</span></h2>
-          </div>
-          <div id="detail-likes-div">
-            <p class="horse-info">Likes: <span id="detail-likes">0</span></p>
-          </div>
+        <article id="detail-grid">
           <div id="detail-image-div">
             <figure class="horse-info" id="detail-image">
               <!--test, remove this-->
               <img src="https://cdn.pixabay.com/photo/2017/04/02/19/57/horse-2196755__480.jpg" alt="">
             </figure>
+            <div id="detail-healthAndDiet-div">
+              <h3>Health and Diet</h3>
+              <ul>
+                <li>
+                  <h4>Likes to eat:</h4>
+                  <ul id="detail-diet">
+                    <!--remove these li-->
+                    <li>hay</li>
+                    <li>apples</li>
+                    <li>carrots</li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Vaccinations:</h4>
+                  <ul id="detail-vaccinations">
+                    <!--remove these li-->
+                    <li>tetanus</li>
+                    <li>influenza</li>
+                  </ul>
+                </li>
+                <li id="detail-hasTapeworm">Doesnt have tapeworm</li>
+              </ul>
+            </div>
           </div>
+          <div>
+            <div id="detail-name-div">
+              <h2 class="horse-info"><span id="detail-name">Test name</span></h2>
+            </div>
+            <div id="detail-likes-div">
+              <p class="horse-info">Likes: <span id="detail-likes">0</span></p>
+            </div>
+            <div id="detail-generalInformation-div">
+              <h3>General Information</h3>
+              <ul>
+                <li id="detail-age">10 years old</li>
+                <li id="detail-horseRace">Race: Icelandic</li>
+                <li id="detail-horseColor">Brownish</li>
+                <li id="detail-gender">Male</li>
+                <li id="detail-height">14 ft tall</li>
+                <li id="detail-topspeed">50mph</li>
+              </ul>
+            </div>
+            <div id="detail-goodToKnow-div">
+                <h3>Good to know</h3>
+              <ul>
+                <li id="detail-temperament">wild</li>
+                <li id="detail-trainingLevel">experienced</li>
+                <li id="detail-riderExperienceRequired">rider experience is required</li>
+                <li id="detail-registered">is registered</li>
+              </ul>
+            </div>
           <div id="detail-owner-div">
             <h3>Owner info</h3>
             <ul>
@@ -183,50 +227,9 @@
               <li id="detail-ownerPhone">00 00 00 00</li>
             </ul>
           </div>
-          <div id="detail-goodToKnow-div">
-              <h3>Good to know</h3>
-            <ul>
-              <li id="detail-temperament">wild</li>
-              <li id="detail-trainingLevel">experienced</li>
-              <li id="detail-riderExperienceRequired">rider experience is required</li>
-              <li id="detail-registered">is registered</li>
-            </ul>
           </div>
-          <div id="detail-generalInformation-div">
-            <h3>General Information</h3>
-            <ul>
-              <li id="detail-age">10 years old</li>
-              <li id="detail-horseRace">Race: Icelandic</li>
-              <li id="detail-horseColor">Brownish</li>
-              <li id="detail-gender">Male</li>
-              <li id="detail-height">14 ft tall</li>
-              <li id="detail-topspeed">50mph</li>
-            </ul>
-          </div>
-          <div id="detail-healthAndDiet-div">
-            <h3>Health and Diet</h3>
-            <ul>
-              <li>
-                <h4>Likes to eat:</h4>
-                <ul id="detail-diet">
-                  <!--remove these li-->
-                  <li>hay</li>
-                  <li>apples</li>
-                  <li>carrots</li>
-                </ul>
-              </li>
-              <li>
-                <h4>Vaccinations:</h4>
-                <ul id="detail-vaccinations">
-                  <!--remove these li-->
-                  <li>tetanus</li>
-                  <li>influenza</li>
-                </ul>
-              </li>
-              <li id="detail-hasTapeworm">Doesnt have tapeworm</li>
-            </ul>
-          </div>
-        <form method="dialog">
+        </article>
+        <form method="dialog" id="detail-close-button">
           <button id="cancel-btn">Close</button>
         </form>
       </dialog>
