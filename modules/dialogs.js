@@ -5,7 +5,7 @@
 
 /* ========== UPDATE DIALOG ========== */
 import {submitUpdateForm} from "./submit.js";
-import {endpoint, getOneHorse} from "../main";
+import {endpoint, getOneHorse} from "../main.js";
 
 export function showUpdateDialog(horseObj){
     fillUpdateForm(horseObj);
@@ -74,9 +74,8 @@ function fillUpdateForm(horseObj){
 //todo add showDeleteDialog here
 
 /* ========== DETAIL DIALOG ========== */
-export async function showDetailDialog(event){
-    const article = event.target;
-    const horseID = article.querySelector(".horseID").textContent;
+export async function showDetailDialog(horse){
+    const horseID = horse["id"];
     const horseObj = await getOneHorse(horseID, endpoint);
     const detailDialog = document.querySelector("#detail-dialog");
 
@@ -85,12 +84,12 @@ export async function showDetailDialog(event){
         .innerHTML = /*html*/`<img src="${horseObj["image"]}" alt="">`;
 
     /* Health And Diet info */
-    const dietArr = horseObj["diet"].split(",");
+    const dietArr = horseObj["diet"];
     for(const food of dietArr){
         detailDialog.querySelector("#detail-diet")
             .insertAdjacentHTML("beforeend", /*html*/`<li>${food}</li>`);
     }
-    const vaccinationsArr = horseObj["vaccinations"].split(",");
+    const vaccinationsArr = horseObj["vaccinations"];
     for(const vaccination of vaccinationsArr){
         detailDialog.querySelector("#detail-vaccinations")
             .insertAdjacentHTML("beforeend", /*html*/`<li>${vaccination}</li>`);
@@ -136,6 +135,8 @@ export async function showDetailDialog(event){
                 /*html*/`<li>${key}: ${owner[key]}</li>`);
     }
 
+    /* Show dialog */
+    detailDialog.showModal();
     function clearWithEscape(event){
         if(event.key === "Escape") {
             window.removeEventListener("keydown", clearWithEscape);
