@@ -144,8 +144,22 @@ nav{
 }
 
 /* ========== detail dialog ========== */
-/* todo: add detail dialog styling here */
-
+#detail-dialog{
+    width: 75vw;
+    border-radius: 1em;
+}
+#detail-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#detail-image-div img{
+    width: 100%;
+    object-fit: contain;
+    height: 50vh;
+}
+#detail-close-button{
+    text-align: center;
+}
 /* ========== toast messages ========== */
 #toast-container {
     position: fixed;
