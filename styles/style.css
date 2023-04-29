@@ -222,15 +222,29 @@ nav{
     min-height: 3em;
     margin: 1em;
 }
-#detail-owner-div{
+#detail-owner-div, #detail-healthAndDiet-div{
     background-color: var(--body-background-color);
     padding:0.5em;
     margin: 0.5em;
     border-radius: 1em;
-    max-width: 80%;
 }
-#detail-healthAndDiet-div{
-
+#detail-diet, #detail-vaccinations{
+    display: grid;
+    grid-template-rows: 0.5em;
+    grid-template-columns: auto auto auto;
+}
+#detail-vaccinations{
+    grid-template-rows: 0.5em 0.5em;
+}
+#detail-like-btns{
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5em;
+    margin: 0 2em 0 2em;
+}
+#detail-like-btns button{
+    min-height: 2.5em;
+    min-width: 5em;
 }
 /* ========== toast messages ========== */
 #toast-container {
