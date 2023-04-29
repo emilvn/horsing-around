@@ -3,16 +3,24 @@ import {endpoint, getOneHorse} from "../main.js";
 import {showToastMessage} from "./dialogs.js";
 import {updateGrid} from "./display.js";
 export async function addLike(event){
-    const horseID = event.target.parentElement.querySelector("span:first-child").textContent;
+    const likeButton = event.target;
+    const dislikeButton = likeButton.parentElement.querySelector(".dislike-btn");
+    const horseID = likeButton.parentElement.querySelector(".horseID").textContent;
     const horse = await getOneHorse(horseID, endpoint);
     const likesAmount = horse["likes"] + 1;
+    likeButton.disabled = true;
+    dislikeButton.disabled = false;
     await updateLikes(likesAmount, horseID, endpoint);
 }
 
 export async function removeLike(event){
-    const horseID = event.target.parentElement.querySelector("span:first-child").textContent;
+    const dislikeButton = event.target;
+    const likeButton = dislikeButton.parentElement.querySelector(".like-btn");
+    const horseID = dislikeButton.parentElement.querySelector(".horseID").textContent;
     const horse = await getOneHorse(horseID, endpoint);
     const likesAmount = horse["likes"] - 1;
+    dislikeButton.disabled = true;
+    likeButton.disabled = false;
     await updateLikes(likesAmount, horseID, endpoint);
 }
 
@@ -28,12 +36,12 @@ async function updateLikes(likesAmount, horseID, endpoint){
             })
         })
         if(response.ok){
-            showToastMessage("Horse Liked", "success");
+            showToastMessage("Horse liked/disliked", "success");
             console.log("Horse like added successfully");
             await updateGrid();
         }
         else{
-            showToastMessage("Horse like failed", "error");
+            showToastMessage("Horse like/dislike failed", "error");
             console.log("Bad response at updateLikes");
         }
     }

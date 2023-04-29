@@ -40,10 +40,10 @@
           </div>
           <div class="grid-item-btns">
             <span class="hidden horseID">horse_17</span>
-            <button>Like(<span class="likes">2</span>)</button>
-            <button>Dislike</button>
-            <button>Delete</button>
-            <button>Edit</button>
+            <button class="like-btn">Like(<span class="likes"><!--insert horse likes here with js--></span>)</button>
+            <button class="dislike-btn">Dislike</button>
+            <button class="delete-btn">Delete</button>
+            <button class="edit-btn">Edit</button>
           </div>
         </article>
       </section>
@@ -162,9 +162,42 @@
       <dialog id="detail-dialog">
         <article id="detail-grid">
           <div id="detail-image-div">
-            <figure class="horse-info" id="detail-image">
+            <div class="horse-info" id="detail-image">
               <!--insert img tag here with js-->
-            </figure>
+            </div>
+            <div id="detail-like-btns">
+              <span id="detail-horseID" class="hidden horseID"></span>
+              <button id="detail-like-btn" class="like-btn">Like</button>
+              <button id="detail-dislike-btn" class="dislike-btn">Dislike</button>
+            </div>
+            <div id="detail-owner-div">
+              <h3>Owner info</h3>
+              <ul id="detail-owner">
+                <!--insert owner key values here with js-->
+              </ul>
+            </div>
+            <form method="dialog" id="detail-close-button">
+              <button id="cancel-btn">Close</button>
+            </form>
+          </div>
+          <div>
+            <div id="detail-name-div">
+              <h2 class="horse-info"><span id="detail-name"><!--insert horse name here with js--></span></h2>
+            </div>
+            <div id="detail-likes-div">
+              <h5 class="horse-info"><span id="detail-likes"><!--insert likes here with js--></span></h5>
+            </div>
+            <div id="detail-generalInformation-div">
+              <p id="detail-generalInformation"><!--insert general information here with js--></p>
+            </div>
+            <div id="detail-experienceAndRegistration-div">
+                <h3>Experience and registration</h3>
+              <ul>
+                <li id="detail-trainingLevel"><!--insert training level here with js--></li>
+                <li id="detail-riderExperienceRequired"><!--insert rider experience required here with js--></li>
+                <li id="detail-registered"><!--insert registration status here with js--></li>
+              </ul>
+            </div>
             <div id="detail-healthAndDiet-div">
               <h3>Health and Diet</h3>
               <ul>
@@ -180,48 +213,13 @@
                     <!--insert vaccination li elements here with js-->
                   </ul>
                 </li>
-                <li id="detail-hasTapeworm">Doesnt have tapeworm</li>
+                <li>
+                  <h4 id="detail-hasTapeworm"></h4>
+                </li>
               </ul>
             </div>
-          </div>
-          <div>
-            <div id="detail-name-div">
-              <h2 class="horse-info"><span id="detail-name"><!--insert horse name here with js--></span></h2>
-            </div>
-            <div id="detail-likes-div">
-              <p class="horse-info">Likes: <span id="detail-likes"><!--insert likes here with js--></span></p>
-            </div>
-            <div id="detail-generalInformation-div">
-              <h3>General Information</h3>
-              <ul>
-                <li id="detail-age"><!--insert age here with js--></li>
-                <li id="detail-horseRace"><!--insert race here with js--></li>
-                <li id="detail-horseColor"><!--insert color here with js--></li>
-                <li id="detail-gender"><!--insert gender here with js--></li>
-                <li id="detail-height"><!--insert height here with js--></li>
-                <li id="detail-topspeed"><!--insert top speed here with js--></li>
-              </ul>
-            </div>
-            <div id="detail-goodToKnow-div">
-                <h3>Good to know</h3>
-              <ul>
-                <li id="detail-temperament"><!--insert temperament here with js--></li>
-                <li id="detail-trainingLevel"><!--insert training level here with js--></li>
-                <li id="detail-riderExperienceRequired"><!--insert rider experience required here with js--></li>
-                <li id="detail-registered"><!--insert registration status here with js--></li>
-              </ul>
-            </div>
-          <div id="detail-owner-div">
-            <h3>Owner info</h3>
-            <ul id="detail-owner">
-              <!--insert owner key values here with js-->
-            </ul>
-          </div>
           </div>
         </article>
-        <form method="dialog" id="detail-close-button">
-          <button id="cancel-btn">Close</button>
-        </form>
       </dialog>
 
       <!-- ========== SUCCESS/ERROR TOAST MESSAGES ========== -->

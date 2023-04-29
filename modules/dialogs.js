@@ -6,6 +6,7 @@
 /* ========== UPDATE DIALOG ========== */
 import {submitUpdateForm} from "./submit.js";
 import {endpoint, getOneHorse} from "../main.js";
+import {addLike, removeLike} from "./like.js";
 
 export function showUpdateDialog(horseObj){
     fillUpdateForm(horseObj);
@@ -79,6 +80,10 @@ export async function showDetailDialog(horse){
     const horseObj = await getOneHorse(horseID, endpoint);
     const detailDialog = document.querySelector("#detail-dialog");
 
+    /* Horse ID */
+    detailDialog.querySelector("#detail-horseID")
+        .textContent = horseID;
+
     /* Image */
     detailDialog.querySelector("#detail-image")
         .innerHTML = /*html*/`<img src="${horseObj["image"]}" alt="">`;
@@ -100,26 +105,26 @@ export async function showDetailDialog(horse){
     /* Name and Likes */
     detailDialog.querySelector("#detail-name")
         .textContent = horseObj["name"];
+    let likesText;
+    if(horseObj["likes"]>0){
+        likesText = horseObj["likes"] + " likes.";
+    }
+    else if(horseObj["likes"]<0){
+        likesText = Math.abs(horseObj["likes"]) + " dislikes."
+    }
+    else {
+        likesText = "No likes/dislikes."
+    }
     detailDialog.querySelector("#detail-likes")
-        .textContent = horseObj["likes"];
+        .textContent = likesText;
 
     /* General Information */
-    detailDialog.querySelector("#detail-age")
-        .textContent = `${horseObj["age"]} years old.`;
-    detailDialog.querySelector("#detail-horseRace")
-        .textContent = `Race: ${horseObj["race"]}`;
-    detailDialog.querySelector("#detail-horseColor")
-        .textContent = `Has a beautiful ${horseObj["color"]} color.`;
-    detailDialog.querySelector("#detail-gender")
-        .textContent = (horseObj["gender"] === "male")? "A fine stallion" : "A beautiful mare";
-    detailDialog.querySelector("#detail-height")
-        .textContent = `${horseObj["height"]}ft tall`;
-    detailDialog.querySelector("#detail-topspeed")
-        .textContent = `Can run a blistering ${horseObj["topspeed"]}mph`;
+    const isMale = horseObj["gender"]==="male";
+    detailDialog.querySelector("#detail-generalInformation")
+        .textContent = `${horseObj["name"]} is a ${horseObj["age"]} year-old, very ${horseObj["temperament"]}, ${horseObj["color"]} ${horseObj["race"]} ${(isMale)?"stallion":"mare"}.
+        ${(isMale)?"He":"She"} is ${horseObj["height"]}ft tall, and can run a ${(horseObj["topspeed"]>=40)?"blistering":"modest"} ${horseObj["topspeed"]}mph.`;
 
-    /* Good to know information */
-    detailDialog.querySelector("#detail-temperament")
-        .textContent = `A ${horseObj["temperament"]} tempered horse.`;
+    /* Experience and Registration */
     detailDialog.querySelector("#detail-trainingLevel")
         .textContent = `${horseObj["trainingLevel"]} level of training.`;
     detailDialog.querySelector("#detail-riderExperienceRequired")
@@ -134,6 +139,26 @@ export async function showDetailDialog(horse){
             .insertAdjacentHTML("beforeend",
                 /*html*/`<li>${key}: ${owner[key]}</li>`);
     }
+
+    /* Event listeners for like/dislike buttons */
+    const likeButton = detailDialog.querySelector("#detail-like-btn");
+    const dislikeButton = detailDialog.querySelector("#detail-dislike-btn");
+
+    async function like(event){
+        /*likeButton.disabled = true;
+        dislikeButton.disabled = false;*/
+        await addLike(event);
+        await updateDetailDialogLikes();
+    }
+    async function dislike(event){
+        /*dislikeButton.disabled = true;
+        likeButton.disabled = false;*/
+
+        await removeLike(event);
+        await updateDetailDialogLikes();
+    }
+    likeButton.addEventListener("click", like);
+    dislikeButton.addEventListener("click", dislike);
 
     /* Show dialog */
     detailDialog.showModal();
@@ -156,6 +181,10 @@ function clearDetailDialog(){
     const detailDialog = document.querySelector("#detail-dialog");
     detailDialog.querySelector("#cancel-btn").removeEventListener("click", clearDetailDialog);
 
+    detailDialog.querySelector("#detail-like-btn").disabled = false;
+    detailDialog.querySelector("#detail-dislike-btn").disabled = false;
+
+
     detailDialog.close();
 
     /* Image */
@@ -177,22 +206,10 @@ function clearDetailDialog(){
         .textContent = "";
 
     /* General Information */
-    detailDialog.querySelector("#detail-age")
-        .textContent = "";
-    detailDialog.querySelector("#detail-horseRace")
-        .textContent = "";
-    detailDialog.querySelector("#detail-horseColor")
-        .textContent = "";
-    detailDialog.querySelector("#detail-gender")
-        .textContent = "";
-    detailDialog.querySelector("#detail-height")
-        .textContent = "";
-    detailDialog.querySelector("#detail-topspeed")
+    detailDialog.querySelector("#detail-generalInformation")
         .textContent = "";
 
-    /* Good to know information */
-    detailDialog.querySelector("#detail-temperament")
-        .textContent = "";
+    /* Experience and Registration information */
     detailDialog.querySelector("#detail-trainingLevel")
         .textContent = "";
     detailDialog.querySelector("#detail-riderExperienceRequired")
@@ -203,6 +220,24 @@ function clearDetailDialog(){
     /* Owner information */
     detailDialog.querySelector("#detail-owner")
         .innerHTML = "";
+}
+
+async function updateDetailDialogLikes(){
+    const horseID = document.querySelector("#detail-horseID").textContent;
+    const horseObj = await getOneHorse(horseID, endpoint);
+    let likesText;
+    console.log(horseObj["likes"]);
+    if(horseObj["likes"]>0){
+        likesText = horseObj["likes"] + " likes.";
+    }
+    else if(horseObj["likes"]<0){
+        likesText = Math.abs(horseObj["likes"]) + " dislikes."
+    }
+    else {
+        likesText = "No likes/dislikes."
+    }
+    document.querySelector("#detail-likes")
+        .textContent = likesText;
 }
 
 /* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
