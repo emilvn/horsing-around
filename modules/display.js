@@ -12,3 +12,5 @@ export async function updateGrid(){
 
 /* ========== SORT HORSES ========== */
 //todo add sortHorses here
+
+/* ========== TOOLTIP FOR SHOWDETAILDIALOG ========== */
