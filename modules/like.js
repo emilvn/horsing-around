@@ -8,7 +8,7 @@ export async function addLike(event){
     const horseID = likeButton.parentElement.querySelector(".horseID").textContent;
     const horse = await getOneHorse(horseID, endpoint);
     const likesAmount = horse["likes"] + 1;
-    likeButton.disabled = true;
+    likeButton.disabled = !dislikeButton.disabled;
     dislikeButton.disabled = false;
     await updateLikes(likesAmount, horseID, endpoint);
 }
@@ -19,7 +19,7 @@ export async function removeLike(event){
     const horseID = dislikeButton.parentElement.querySelector(".horseID").textContent;
     const horse = await getOneHorse(horseID, endpoint);
     const likesAmount = horse["likes"] - 1;
-    dislikeButton.disabled = true;
+    dislikeButton.disabled = !likeButton.disabled;
     likeButton.disabled = false;
     await updateLikes(likesAmount, horseID, endpoint);
 }
