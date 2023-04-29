@@ -190,8 +190,8 @@ nav{
     padding: 5px;
     font-size: 12px;
     pointer-events: none;
+    border-radius: 0.5em;
 }
-
 
 /* ========== detail dialog ========== */
 #detail-dialog{
