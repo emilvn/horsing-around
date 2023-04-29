@@ -2,18 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Galop Galore</title>
     <link rel="stylesheet" href="styles/style.css" />
-    <link
-      rel="shortcut icon"
-      href="https://cdn.pixabay.com/photo/2020/09/10/17/42/unicorn-5561072__480.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2020/09/10/17/42/unicorn-5561072__480.png" type="image/x-icon"/>
   </head>
   <body>
     <header>
@@ -22,12 +15,7 @@
     <nav>
       <div>
         <label for="searchBar">Search</label>
-        <input
-          type="search"
-          id="searchBar"
-          name="searchBar"
-          placeholder="Name/Race/Color"
-        />
+        <input type="search" id="searchBar" name="searchBar" placeholder="Name/Race/Color"/>
       </div>
       <div>
         <label for="sortBy">Sort by:</label>
@@ -51,7 +39,7 @@
             <p>Horse gender</p>
           </div>
           <div class="grid-item-btns">
-            <span class="hidden">horse_17</span>
+            <span class="hidden horseID">horse_17</span>
             <button>Like(<span class="likes">2</span>)</button>
             <button>Dislike</button>
             <button>Delete</button>
@@ -74,41 +62,18 @@
           <fieldset>
             <legend>Image</legend>
             <label for="update-image">Image URL:*</label>
-            <input
-              type="url"
-              name="image"
-              id="update-image"
-              placeholder="Image URL"
-              required
-            />
+            <input type="url" name="image" id="update-image" placeholder="Image URL" required/>
           </fieldset>
           <div class="side-by-side">
             <div>
               <fieldset>
                 <legend>Owner Information</legend>
                 <label for="update-ownerName">Name:*</label>
-                <input
-                  type="text"
-                  name="ownerName"
-                  id="update-ownerName"
-                  placeholder="Owner Name"
-                  required
-                />
+                <input type="text" name="ownerName" id="update-ownerName" placeholder="Owner Name" required/>
                 <label for="update-ownerEmail">Email:*</label>
-                <input
-                  type="email"
-                  name="ownerEmail"
-                  id="update-ownerEmail"
-                  placeholder="Email"
-                  required
-                />
+                <input type="email" name="ownerEmail" id="update-ownerEmail" placeholder="Email" required/>
                 <label for="update-ownerPhone">Phone number:</label>
-                <input
-                  type="text"
-                  name="ownerPhone"
-                  id="update-ownerPhone"
-                  placeholder="Phone Number"
-                />
+                <input type="text" name="ownerPhone" id="update-ownerPhone" placeholder="Phone Number"/>
               </fieldset>
               <fieldset>
                 <legend>Good to know</legend>
@@ -131,112 +96,44 @@
                   <option value="untrained">Untrained</option>
                   <option value="basic">Basic</option>
                 </select>
-                <label for="update-riderExperienceRequired"
-                  >Rider experience</label
-                >
-                <input
-                  type="checkbox"
-                  name="riderExperienceRequired"
-                  id="update-riderExperienceRequired"
-                />
+                <label for="update-riderExperienceRequired">Rider experience</label>
+                <input type="checkbox" name="riderExperienceRequired" id="update-riderExperienceRequired"/>
                 <label for="update-registered">Registered</label>
-                <input
-                  type="checkbox"
-                  name="registered"
-                  id="update-registered"
-                />
+                <input type="checkbox" name="registered" id="update-registered"/>
               </fieldset>
             </div>
             <fieldset>
               <legend>General Information</legend>
               <label for="update-horseName">Name:*</label>
-              <input
-                type="text"
-                name="horseName"
-                id="update-horseName"
-                placeholder="Name of horse"
-                required
-              />
+              <input type="text" name="horseName" id="update-horseName" placeholder="Name of horse" required/>
               <label for="update-age">Age:*</label>
-              <input
-                type="number"
-                step="any"
-                name="age"
-                id="update-age"
-                placeholder="Age of horse"
-                required
-              />
+              <input type="number" step="any" name="age" id="update-age" placeholder="Age of horse" required/>
               <label for="update-horseRace">Race:*</label>
-              <input
-                type="text"
-                name="horseRace"
-                id="update-horseRace"
-                placeholder="Race of horse"
-                required
-              />
+              <input type="text" name="horseRace" id="update-horseRace" placeholder="Race of horse" required/>
               <label for="update-horseColor">Color:</label>
               <input type="text" name="horseColor" id="update-horseColor" />
               <label>Gender:*</label>
               <div>
                 <label for="update-gender-male">Male</label>
-                <input
-                  type="radio"
-                  name="gender"
-                  id="update-gender-male"
-                  value="male"
-                  checked
-                />
+                <input type="radio" name="gender" id="update-gender-male" value="male" checked/>
                 <label for="update-gender-female">Female</label>
-                <input
-                  type="radio"
-                  name="gender"
-                  id="update-gender-female"
-                  value="female"
-                />
+                <input type="radio" name="gender" id="update-gender-female" value="female"/>
               </div>
               <label for="update-height">Height:</label>
-              <input
-                type="number"
-                step="any"
-                name="height"
-                id="update-height"
-                placeholder="Height in feet"
-              />
+              <input type="number" step="any" name="height" id="update-height" placeholder="Height in feet"/>
               <label for="update-topspeed">Top speed:</label>
-              <input
-                type="number"
-                step="any"
-                name="topspeed"
-                id="update-topspeed"
-                placeholder="Top speed in mph"
-              />
+              <input type="number" step="any" name="topspeed" id="update-topspeed" placeholder="Top speed in mph"/>
             </fieldset>
           </div>
           <fieldset>
             <legend>Health and Diet</legend>
             <label for="update-diet">Preferred Diet:</label>
-            <textarea
-              name="diet"
-              id="update-diet"
-              cols="10"
-              rows="3"
-              placeholder="Hay, Apples, Carrots,..."
-            ></textarea>
+            <textarea name="diet" id="update-diet" cols="10" rows="3" placeholder="Hay, Apples, Carrots,..."></textarea>
             <label for="update-vaccinations">Vaccinations:</label>
-            <textarea
-              name="vaccinations"
-              id="update-vaccinations"
-              cols="10"
-              rows="3"
-              placeholder="Rabies, Tetanus, Influenza,..."
-            ></textarea>
+            <textarea name="vaccinations" id="update-vaccinations" cols="10" rows="3" placeholder="Rabies, Tetanus, Influenza,..."></textarea>
             <div></div>
             <div>
-              <input
-                type="checkbox"
-                name="hasTapeworm"
-                id="update-hasTapeworm"
-              />
+              <input type="checkbox" name="hasTapeworm" id="update-hasTapeworm"/>
               <label for="update-hasTapeworm">Has tapeworm</label>
             </div>
           </fieldset>
@@ -262,7 +159,70 @@
       </dialog>
 
       <!-- ========== DETAIL DIALOG ========== -->
-      <!--todo add detail dialog here-->
+      <dialog id="detail-dialog">
+        <article id="detail-grid">
+          <div id="detail-image-div">
+            <figure class="horse-info" id="detail-image">
+              <!--insert img tag here with js-->
+            </figure>
+            <div id="detail-healthAndDiet-div">
+              <h3>Health and Diet</h3>
+              <ul>
+                <li>
+                  <h4>Likes to eat:</h4>
+                  <ul id="detail-diet">
+                    <!--insert diet li elements here with js-->
+                  </ul>
+                </li>
+                <li>
+                  <h4>Vaccinations:</h4>
+                  <ul id="detail-vaccinations">
+                    <!--insert vaccination li elements here with js-->
+                  </ul>
+                </li>
+                <li id="detail-hasTapeworm">Doesnt have tapeworm</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div id="detail-name-div">
+              <h2 class="horse-info"><span id="detail-name"><!--insert horse name here with js--></span></h2>
+            </div>
+            <div id="detail-likes-div">
+              <p class="horse-info">Likes: <span id="detail-likes"><!--insert likes here with js--></span></p>
+            </div>
+            <div id="detail-generalInformation-div">
+              <h3>General Information</h3>
+              <ul>
+                <li id="detail-age"><!--insert age here with js--></li>
+                <li id="detail-horseRace"><!--insert race here with js--></li>
+                <li id="detail-horseColor"><!--insert color here with js--></li>
+                <li id="detail-gender"><!--insert gender here with js--></li>
+                <li id="detail-height"><!--insert height here with js--></li>
+                <li id="detail-topspeed"><!--insert top speed here with js--></li>
+              </ul>
+            </div>
+            <div id="detail-goodToKnow-div">
+                <h3>Good to know</h3>
+              <ul>
+                <li id="detail-temperament"><!--insert temperament here with js--></li>
+                <li id="detail-trainingLevel"><!--insert training level here with js--></li>
+                <li id="detail-riderExperienceRequired"><!--insert rider experience required here with js--></li>
+                <li id="detail-registered"><!--insert registration status here with js--></li>
+              </ul>
+            </div>
+          <div id="detail-owner-div">
+            <h3>Owner info</h3>
+            <ul id="detail-owner">
+              <!--insert owner key values here with js-->
+            </ul>
+          </div>
+          </div>
+        </article>
+        <form method="dialog" id="detail-close-button">
+          <button id="cancel-btn">Close</button>
+        </form>
+      </dialog>
 
       <!-- ========== SUCCESS/ERROR TOAST MESSAGES ========== -->
       <div id="toast-container"></div>

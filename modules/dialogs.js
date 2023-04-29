@@ -5,6 +5,7 @@
 
 /* ========== UPDATE DIALOG ========== */
 import {submitUpdateForm} from "./submit.js";
+import {endpoint, getOneHorse} from "../main.js";
 
 export function showUpdateDialog(horseObj){
     fillUpdateForm(horseObj);
@@ -71,6 +72,138 @@ function fillUpdateForm(horseObj){
 
 /* ========== DELETE DIALOG ========== */
 //todo add showDeleteDialog here
+
+/* ========== DETAIL DIALOG ========== */
+export async function showDetailDialog(horse){
+    const horseID = horse["id"];
+    const horseObj = await getOneHorse(horseID, endpoint);
+    const detailDialog = document.querySelector("#detail-dialog");
+
+    /* Image */
+    detailDialog.querySelector("#detail-image")
+        .innerHTML = /*html*/`<img src="${horseObj["image"]}" alt="">`;
+
+    /* Health And Diet info */
+    const dietArr = horseObj["diet"];
+    for(const food of dietArr){
+        detailDialog.querySelector("#detail-diet")
+            .insertAdjacentHTML("beforeend", /*html*/`<li>${food}</li>`);
+    }
+    const vaccinationsArr = horseObj["vaccinations"];
+    for(const vaccination of vaccinationsArr){
+        detailDialog.querySelector("#detail-vaccinations")
+            .insertAdjacentHTML("beforeend", /*html*/`<li>${vaccination}</li>`);
+    }
+    detailDialog.querySelector("#detail-hasTapeworm")
+        .textContent = (horseObj["hasTapeworm"])? "Has tapeworm.." : "Tapeworm free!";
+
+    /* Name and Likes */
+    detailDialog.querySelector("#detail-name")
+        .textContent = horseObj["name"];
+    detailDialog.querySelector("#detail-likes")
+        .textContent = horseObj["likes"];
+
+    /* General Information */
+    detailDialog.querySelector("#detail-age")
+        .textContent = `${horseObj["age"]} years old.`;
+    detailDialog.querySelector("#detail-horseRace")
+        .textContent = `Race: ${horseObj["race"]}`;
+    detailDialog.querySelector("#detail-horseColor")
+        .textContent = `Has a beautiful ${horseObj["color"]} color.`;
+    detailDialog.querySelector("#detail-gender")
+        .textContent = (horseObj["gender"] === "male")? "A fine stallion" : "A beautiful mare";
+    detailDialog.querySelector("#detail-height")
+        .textContent = `${horseObj["height"]}ft tall`;
+    detailDialog.querySelector("#detail-topspeed")
+        .textContent = `Can run a blistering ${horseObj["topspeed"]}mph`;
+
+    /* Good to know information */
+    detailDialog.querySelector("#detail-temperament")
+        .textContent = `A ${horseObj["temperament"]} tempered horse.`;
+    detailDialog.querySelector("#detail-trainingLevel")
+        .textContent = `${horseObj["trainingLevel"]} level of training.`;
+    detailDialog.querySelector("#detail-riderExperienceRequired")
+        .textContent = (horseObj["riderExperienceRequired"])? "Rider experience is required.": "Beginner friendly";
+    detailDialog.querySelector("#detail-registered")
+        .textContent = (horseObj["registered"])? "Registered" : "Unregistered";
+
+    /* Owner information */
+    const owner = horseObj["owner"];
+    for(const key in owner){
+        detailDialog.querySelector("#detail-owner")
+            .insertAdjacentHTML("beforeend",
+                /*html*/`<li>${key}: ${owner[key]}</li>`);
+    }
+
+    /* Show dialog */
+    detailDialog.showModal();
+    function clearWithEscape(event){
+        if(event.key === "Escape") {
+            window.removeEventListener("keydown", clearWithEscape);
+            clearDetailDialog()
+        }
+    }
+    /* Event listeners for closing and resetting the detail dialog */
+    //cancel button
+    detailDialog.querySelector("#cancel-btn").addEventListener("click", clearDetailDialog);
+    //Keyboard Escape button
+    window.addEventListener("keydown", clearWithEscape);
+}
+
+/* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
+//Clears all fields in the detail dialog
+function clearDetailDialog(){
+    const detailDialog = document.querySelector("#detail-dialog");
+    detailDialog.querySelector("#cancel-btn").removeEventListener("click", clearDetailDialog);
+
+    detailDialog.close();
+
+    /* Image */
+    detailDialog.querySelector("#detail-image")
+        .innerHTML = "";
+
+    /* Health And Diet info */
+    detailDialog.querySelector("#detail-diet")
+        .innerHTML = "";
+    detailDialog.querySelector("#detail-vaccinations")
+        .innerHTML = "";
+    detailDialog.querySelector("#detail-hasTapeworm")
+        .textContent = "";
+
+    /* Name and Likes */
+    detailDialog.querySelector("#detail-name")
+        .textContent = "";
+    detailDialog.querySelector("#detail-likes")
+        .textContent = "";
+
+    /* General Information */
+    detailDialog.querySelector("#detail-age")
+        .textContent = "";
+    detailDialog.querySelector("#detail-horseRace")
+        .textContent = "";
+    detailDialog.querySelector("#detail-horseColor")
+        .textContent = "";
+    detailDialog.querySelector("#detail-gender")
+        .textContent = "";
+    detailDialog.querySelector("#detail-height")
+        .textContent = "";
+    detailDialog.querySelector("#detail-topspeed")
+        .textContent = "";
+
+    /* Good to know information */
+    detailDialog.querySelector("#detail-temperament")
+        .textContent = "";
+    detailDialog.querySelector("#detail-trainingLevel")
+        .textContent = "";
+    detailDialog.querySelector("#detail-riderExperienceRequired")
+        .textContent = "";
+    detailDialog.querySelector("#detail-registered")
+        .textContent = "";
+
+    /* Owner information */
+    detailDialog.querySelector("#detail-owner")
+        .innerHTML = "";
+}
 
 /* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
 //type is success or error
