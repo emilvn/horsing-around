@@ -1,10 +1,9 @@
 "use strict";
 
 /* ===== Modules ===== */
-import {showDetailDialog, showToastMessage} from "./modules/dialogs.js";
+import { showToastMessage } from "./modules/dialogs.js";
 import { updateGrid } from "./modules/display.js";
 import { inputSearchChanged } from "./modules/search.js";
-import {addLike, removeLike} from "./modules/like.js";
 
 window.addEventListener("load", main);
 
@@ -14,16 +13,6 @@ export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function main() {
-  fetch("./data/horses.json")
-      .then(response =>
-        response.json().then(res=>{
-          const horses = prepareData(res["horses"]);
-          console.log(horses[0]);
-          showDetailDialog(horses[0]);
-        })
-      )
-  document.querySelector(".like-btn").addEventListener("click", addLike);
-  document.querySelector(".dislike-btn").addEventListener("click", removeLike);
   /* Search event listeners */
   document.querySelector("#searchBar").addEventListener("search", inputSearchChanged);
   document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);

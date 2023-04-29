@@ -145,15 +145,10 @@ export async function showDetailDialog(horse){
     const dislikeButton = detailDialog.querySelector("#detail-dislike-btn");
 
     async function like(event){
-        /*likeButton.disabled = true;
-        dislikeButton.disabled = false;*/
         await addLike(event);
         await updateDetailDialogLikes();
     }
     async function dislike(event){
-        /*dislikeButton.disabled = true;
-        likeButton.disabled = false;*/
-
         await removeLike(event);
         await updateDetailDialogLikes();
     }
@@ -180,12 +175,9 @@ export async function showDetailDialog(horse){
 function clearDetailDialog(){
     const detailDialog = document.querySelector("#detail-dialog");
     detailDialog.querySelector("#cancel-btn").removeEventListener("click", clearDetailDialog);
-
+    detailDialog.close();
     detailDialog.querySelector("#detail-like-btn").disabled = false;
     detailDialog.querySelector("#detail-dislike-btn").disabled = false;
-
-
-    detailDialog.close();
 
     /* Image */
     detailDialog.querySelector("#detail-image")
@@ -226,7 +218,6 @@ async function updateDetailDialogLikes(){
     const horseID = document.querySelector("#detail-horseID").textContent;
     const horseObj = await getOneHorse(horseID, endpoint);
     let likesText;
-    console.log(horseObj["likes"]);
     if(horseObj["likes"]>0){
         likesText = horseObj["likes"] + " likes.";
     }
