@@ -1,21 +1,49 @@
 /* ========== general ========== */
-/*:root{
-}*/
+:root{
+    /* header and captions colors */
+    --header-background-color: #073B3A;
+    --caption-color: #08A045;
+    --header-color: #6BBF59;
+    /* body colors */
+    --body-background-color: #DDB771;
+    /* horse grid item colors */
+    --grid-item-background-color: #fdd284;
+    --grid-item-background-color-hover: var(--body-background-color);
+    /* button colors */
+    --button-background-color: var(--header-color);
+    --button-background-color-hover: #519444;
+    --button-border-color: var(--caption-color);
+}
 html{
     width: 100%;
     height: 100%;
 }
 body{
+    background-color: var(--body-background-color);
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .hidden{
     display: none;
 }
-
+h1, h2, h3, h4, h5, h6{
+    color: var(--caption-color);
+}
+button{
+    border-radius: 0.5em;
+    min-height: 2em;
+    min-width: 4em;
+    border: 1.5px solid var(--button-border-color);
+    background-color: var(--button-background-color);
+}
+button:hover{
+    box-shadow: 0 0 2px 0 var(--button-background-color);
+    background-color: var(--button-background-color-hover);
+}
 /* ========== header ========== */
 header, nav{
-    background-color: darkgray;
+    color: var(--header-color);
+    background-color: var(--header-background-color);
     position: fixed;
     width: 100%;
     text-align: center;
@@ -114,30 +142,38 @@ nav{
 /* ========== grid item styling ========== */
 #horseGrid{
     margin-top: 8em;
+    max-width: 100vw;
 }
 #horseGrid article{
     border-radius: 1em;
-    padding: 1em;
     box-shadow: 0 0 10px 0 black;
+    padding: 1em;
     cursor: pointer;
     position: relative;
+    background-color: var(--grid-item-background-color);
+    max-width: 90vw;
 }
 #horseGrid article:hover{
     box-shadow: 0 0 10px 5px black;
+    background-color: var(--grid-item-background-color-hover);
 }
-#horseGrid article figure{
+#horseGrid article:hover .image-div{
+    background-size: contain;
+    border-radius: unset;
+}
+#horseGrid article .image-div{
+    background-image: url("https://cdn.pixabay.com/photo/2018/05/11/11/11/horse-3390256__480.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 1em;
+    align-items: center;
     height: 200px;
     overflow: hidden;
-}
-#horseGrid article img{
     width: 100%;
-    height: 200px;
-    object-fit: contain;
 }
 #horseGrid article button{
     cursor: pointer;
 }
-
 #horseGrid .grid-item-btns{
     display: flex;
     justify-content: space-between;
