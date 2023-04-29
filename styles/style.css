@@ -159,16 +159,13 @@ nav{
 }
 #horseGrid article:hover .image-div{
     background-size: contain;
-    border-radius: unset;
 }
 #horseGrid article .image-div{
     background-image: url("https://cdn.pixabay.com/photo/2018/05/11/11/11/horse-3390256__480.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 1em;
     align-items: center;
     height: 200px;
-    overflow: hidden;
     width: 100%;
 }
 #horseGrid article button{
