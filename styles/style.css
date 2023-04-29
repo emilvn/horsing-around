@@ -58,6 +58,7 @@ nav{
     left:0;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-bottom: 2px;
 }
 /* ========== nav ========== */
 #add-horse-dialog-button{
