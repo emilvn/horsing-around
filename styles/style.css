@@ -179,6 +179,20 @@ nav{
     justify-content: space-between;
 }
 
+/* ========== detail dialog tooltip ========== */
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+
 /* ========== detail dialog ========== */
 /* todo: add detail dialog styling here */
 
