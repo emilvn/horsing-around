@@ -5,12 +5,10 @@ import { showToastMessage } from "./modules/dialogs.js";
 import { showDeleteDialog } from "./modules/dialogs.js";
 import { updateGrid } from "./modules/display.js";
 import { inputSearchChanged } from "./modules/search.js";
-import { deleteHorse }  from "./modules/submit.js";
+import { deleteHorse } from "./modules/submit.js";
 import { cancelDelete } from "./modules/submit.js";
 
-
 window.addEventListener("load", main);
-
 
 /* ===== Global variables ===== */
 
@@ -18,14 +16,24 @@ export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function main() {
+  console.log("main up");
   /* Search event listeners */
-  document.querySelector("#searchBar").addEventListener("search", inputSearchChanged);
-  document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);
+  document
+    .querySelector("#searchBar")
+    .addEventListener("search", inputSearchChanged);
+  document
+    .querySelector("#searchBar")
+    .addEventListener("keyup", inputSearchChanged);
   //todo call relevant functions
+  updateGrid();
   //todo add relevant event listeners
-  document.querySelector(".delete-btn").addEventListener("click", showDeleteDialog);
-  document.querySelector("#cancel-btn-in-delete").addEventListener("click", cancelDelete)
-  document.querySelector("#deleteForm").addEventListener("submit", deleteHorse)
+  document
+    .querySelector(".delete-btn")
+    .addEventListener("click", showDeleteDialog);
+  document
+    .querySelector("#cancel-btn-in-delete")
+    .addEventListener("click", cancelDelete);
+  document.querySelector("#deleteForm").addEventListener("submit", deleteHorse);
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
@@ -93,8 +101,6 @@ export async function updateHorse(horse, horseID, endpoint) {
 
 /* ========== DELETE ========== */
 export function deleteHorseClicked(event) {
-  
-  
   const horseClicked = event.target;
   const horseId = horseClicked.getAttribute("id");
   deleteHorse(event, horseId);
