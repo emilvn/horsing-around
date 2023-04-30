@@ -1,4 +1,8 @@
 "use strict";
+
+import { removeLike } from "./like";
+import { deleteHorse } from "./submit";
+
 /* ========== Horse Array ========== */
 const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -20,7 +24,7 @@ export async function getHorses() {
 /* ========== SHOW ALL HORSES ========== */
 export function showHorses(horseArr) {
   //todo add showHorses here
-  document.querySelector("#horseGrid").innerHTML = ""; // resets content of #posts
+  document.querySelector("#horseGrid").innerHTML = "";
   for (const horse of horseArr) {
     showHorse(horse);
   }
@@ -58,6 +62,15 @@ export function showHorse(horseObj) {
 
   const horseGridContainer = document.querySelector("#horseGrid");
   document.querySelector("#horseGrid").insertAdjacentHTML("beforeend", html);
+
+  document.querySelector("#like-btn").addEventListener("click", addLike());
+  document
+    .querySelector("#dislike-btn")
+    .addEventListener("click", removeLike());
+  document
+    .querySelector("#delete-btn")
+    .addEventListener("click", deleteHorse());
+  document.querySelector("#edit-btn").addEventListener("click", editHorse());
 
   const horseArticleElement =
     horseGridContainer.querySelector("article:last-child");
