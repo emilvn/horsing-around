@@ -5,6 +5,9 @@ import { showToastMessage } from "./modules/dialogs.js";
 import { showDeleteDialog } from "./modules/dialogs.js";
 import { updateGrid } from "./modules/display.js";
 import { inputSearchChanged } from "./modules/search.js";
+import { deleteHorse }  from "./modules/submit.js";
+import { cancelDelete } from "./modules/submit.js";
+
 
 window.addEventListener("load", main);
 
@@ -20,6 +23,7 @@ function main() {
   //todo call relevant functions
   //todo add relevant event listeners
   document.querySelector("button.delete-btn").addEventListener("click", showDeleteDialog)
+  document.querySelector("#cancel-btn-in-delete").addEventListener("click", cancelDelete)
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {

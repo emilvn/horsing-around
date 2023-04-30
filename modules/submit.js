@@ -39,4 +39,12 @@ export async function submitUpdateForm(event){
 }
 
 /* ========== SUBMIT DELETE ========== */
-//todo add submitDeleteForm here
+export function deleteHorse() {
+
+}
+
+/* ========== SUBMIT CANCEL IN DELETE ========== */
+export function cancelDelete() {
+const deleteForm = document.querySelector("#dialogDeleteForm");
+    deleteForm.close();
+}
