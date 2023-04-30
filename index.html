@@ -55,8 +55,8 @@
       <dialog id="update-dialog">
         <h2>Update Horse</h2>
         <form action="" id="update-form">
-          <label for="update-horseId"></label>
-          <input type="hidden" name="horseId" id="update-horseId" />
+          <label for="update-horseID"></label>
+          <input type="hidden" name="horseID" id="update-horseID"/>
           <label for="update-likes"></label>
           <input type="hidden" name="likes" id="update-likes" />
           <fieldset>
@@ -149,11 +149,12 @@
       <dialog id="dialogDeleteForm">
         <h3>Are you sure you want to delete this horse?</h3>
         <form id="deleteForm" action="">
-          <label for="passwordVerification">Password:</label>
-          <input type="password" name="password" placeholder="Type password to confirm" id="passwordVerification"/>
+          <label for="delete-password-input">Enter admin password:</label>
+          <input type="password" name="password" placeholder="Type password to confirm" id="delete-password-input"/>
           <div>
-            <button id="delete-btn-in-delete">Delete</button>
-            <button id="cancel-btn-in-delete" type="button">Cancel</button>
+            <span id="delete-horseID" class="hidden"></span>
+            <button id="delete-submit-btn">Delete</button>
+            <button id="delete-cancel-btn" type="button">Cancel</button>
           </div>
         </form>
       </dialog>
@@ -177,7 +178,7 @@
               </ul>
             </div>
             <form method="dialog" id="detail-close-button">
-              <button id="cancel-btn">Close</button>
+              <button id="detail-cancel-btn">Close</button>
             </form>
           </div>
           <div>
