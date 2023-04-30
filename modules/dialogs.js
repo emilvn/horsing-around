@@ -74,11 +74,14 @@ function fillUpdateForm(horseObj){
 /* ========== DELETE DIALOG ========== */
 export function showDeleteDialog(event) {
     const deleteForm = document.querySelector("#deleteForm");
-    const deleteButton = event.target;
-    const horseIDElement = deleteButton.parentElement.querySelector(".horseID");
 
+    //get id from the horse article where delete was clicked
+    const deleteButton = event.target; //horse article delete button
+    const horseIDElement = deleteButton.parentElement.querySelector(".horseID");
+    console.log(horseIDElement.textContent);
     deleteForm.querySelector("#delete-horseID")
         .textContent = horseIDElement.textContent;
+
     deleteForm.addEventListener("submit", deleteHorseClicked);
     deleteForm.parentElement.showModal();
 }
@@ -86,6 +89,8 @@ export function closeDeleteDialog() {
     const deleteForm = document.querySelector("#deleteForm");
     deleteForm.parentElement.close();
     deleteForm.reset();
+    deleteForm.querySelector("#delete-horseID")
+        .textContent = "";
 }
 
 /* ========== DETAIL DIALOG ========== */
@@ -179,7 +184,7 @@ export async function showDetailDialog(horse){
     }
     /* Event listeners for closing and resetting the detail dialog */
     //cancel button
-    detailDialog.querySelector("#cancel-btn").addEventListener("click", clearDetailDialog);
+    detailDialog.querySelector("#detail-cancel-btn").addEventListener("click", clearDetailDialog);
     //Keyboard Escape button
     window.addEventListener("keydown", clearWithEscape);
 }
@@ -188,7 +193,7 @@ export async function showDetailDialog(horse){
 //Clears all fields in the detail dialog
 function clearDetailDialog(){
     const detailDialog = document.querySelector("#detail-dialog");
-    detailDialog.querySelector("#cancel-btn").removeEventListener("click", clearDetailDialog);
+    detailDialog.querySelector("#detail-cancel-btn").removeEventListener("click", clearDetailDialog);
     detailDialog.close();
     detailDialog.querySelector("#detail-like-btn").disabled = false;
     detailDialog.querySelector("#detail-dislike-btn").disabled = false;

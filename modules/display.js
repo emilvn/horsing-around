@@ -1,9 +1,8 @@
 "use strict";
 
-/* ========== Horse Array ========== */
-import {deleteHorseClicked} from "./submit";
-import {showDeleteDialog, showUpdateDialog} from "./dialogs";
+import {showDeleteDialog, showDetailDialog, showUpdateDialog} from "./dialogs.js";
 
+/* ========== Horse Array ========== */
 export let horseArr;
 
 /* ========== UPDATE GRID VIEW ========== */
@@ -23,6 +22,9 @@ function showHorse(horseObj){
     //todo add showHorse here
 
     /* vvvvv DON'T DELETE THESE vvvv */
+    //detail dialog event listener
+    currentHorseArticle.addEventListener("click", ()=> showDetailDialog(horseObj) );
+
     //update button event listener
     const updateButton = currentHorseArticle.querySelector(".edit-btn");
     updateButton.addEventListener("click", showUpdateDialog);

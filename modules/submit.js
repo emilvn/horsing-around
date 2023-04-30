@@ -40,18 +40,12 @@ export async function submitUpdateForm(event){
     form.reset();
 }
 
-
 /* ========== SUBMIT DELETE ========== */
-async function submitDeleteForm(horseID){
-    const deleteForm = document.querySelector("#deleteForm");
-    deleteForm.removeEventListener("submit", deleteHorseClicked);
-    deleteForm.parentElement.close();
-    await deleteHorse(horseID, endpoint);
-}
 export async function deleteHorseClicked(event) {
     event.preventDefault();
     const deleteForm = document.querySelector("#deleteForm");
-    const horseID = deleteForm.querySelector("#delete-horseID");
+    const horseID = deleteForm.querySelector("#delete-horseID").textContent;
+    console.log(horseID);
     if(validatePassword(deleteForm["password"].value)){
         await submitDeleteForm(horseID);
     }
@@ -59,4 +53,9 @@ export async function deleteHorseClicked(event) {
         showToastMessage("Wrong password", "error");
     }
 }
-
+async function submitDeleteForm(horseID){
+    const deleteForm = document.querySelector("#deleteForm");
+    deleteForm.removeEventListener("submit", deleteHorseClicked);
+    deleteForm.parentElement.close();
+    await deleteHorse(horseID, endpoint);
+}
