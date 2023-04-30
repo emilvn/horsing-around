@@ -11,9 +11,7 @@ import { cancelDelete } from "./modules/submit.js";
 
 window.addEventListener("load", main);
 
-
 /* ===== Global variables ===== */
-export const password = "emptyyourselfinsideme123"
 export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -98,22 +96,6 @@ export function deleteHorseClicked(event) {
   const horseClicked = event.target;
   const horseId = horseClicked.getAttribute("id");
   deleteHorse(event, horseId)
-}
-
-/* ========== VALIDATE PASSWORD ========== */
-
-function validatePassword(event) {
-  event.preventDefault();
-  const deleteForm = document.querySelector("#deleteForm");
-  const passwordValue = document.querySelector("#passwordVerification");
-
-  if(passwordValue.value === password) {
-    console.log("correct password")
-    deleteHorseClicked(event)}
-    else {
-      alert("Wrong password")
-      deleteForm.reset();
-    }
 }
 
 
