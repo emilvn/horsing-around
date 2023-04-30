@@ -30,14 +30,26 @@ function fillUpdateForm(horseObj){
     form.likes.value = horseObj["likes"];
     /* image */
     form.image.value = horseObj["image"];
+
     /* owner info */
     form.ownerName.value = horseObj.owner["name"];
     form.ownerEmail.value = horseObj.owner["email"];
     form.ownerPhone.value = horseObj.owner["phone"];
+
     /* good to know */
-    for(let i=0; i<form.temperament.options.length; i++){
+    fillExperienceAndRegistrationInputs(form, horseObj);
+    /* General information */
+    fillGeneralInformationInputs(form, horseObj);
+
+    /* Health and diet */
+    form.diet.value = horseObj["diet"].join(", ");
+    form.vaccinations.value = horseObj["vaccinations"].join(", ");
+    form.hasTapeworm.checked = horseObj["hasTapeworm"];
+}
+function fillExperienceAndRegistrationInputs(form, horseObj) {
+    for (let i = 0; i < form.temperament.options.length; i++) {
         const option = form.temperament.options[i];
-        if(option.value === horseObj["temperament"]){
+        if (option.value === horseObj["temperament"]) {
             option.selected = true;
             break;
         }
@@ -51,7 +63,8 @@ function fillUpdateForm(horseObj){
     }
     form.riderExperienceRequired.checked = horseObj["riderExperienceRequired"];
     form.registered.checked = horseObj["registered"];
-    /* General information */
+}
+function fillGeneralInformationInputs(form, horseObj) {
     form.horseName.value = horseObj["name"];
     form.age.value = horseObj["age"];
     form.horseRace.value = horseObj["race"];
@@ -65,10 +78,6 @@ function fillUpdateForm(horseObj){
     }
     form.height.value = horseObj["height"];
     form.topspeed.value = horseObj["topspeed"];
-    /* Health and diet */
-    form.diet.value = horseObj["diet"].join(", ");
-    form.vaccinations.value = horseObj["vaccinations"].join(", ");
-    form.hasTapeworm.checked = horseObj["hasTapeworm"];
 }
 
 /* ========== DELETE DIALOG ========== */
@@ -102,11 +111,28 @@ export async function showDetailDialog(horse) {
 
     /* Horse ID */
     detailDialog.querySelector("#detail-horseID").textContent = horseID;
-
     /* Image */
     detailDialog.querySelector("#detail-image").innerHTML = /*html*/ `<img src="${horseObj["image"]}" alt="">`;
-
     /* Health And Diet info */
+    generateHealthAndDietInfo(horseObj, detailDialog);
+    /* Name and Likes */
+    generateNameAndLikesInfo(detailDialog, horseObj);
+    /* General Information */
+    generateGeneralInfo(horseObj, detailDialog);
+    /* Experience and Registration */
+    generateExperienceAndRegistrationInfo(detailDialog, horseObj);
+    /* Owner information */
+    generateOwnerInfo(horseObj, detailDialog);
+
+    /* Event listeners */
+    addDetailDialogEventListeners(detailDialog, horseObj);
+
+    /* Show dialog */
+    detailDialog.showModal();
+}
+/* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
+// Detail information generation
+function generateHealthAndDietInfo(horseObj, detailDialog) {
     const dietArr = horseObj["diet"];
     for (const food of dietArr) {
         detailDialog
@@ -124,8 +150,8 @@ export async function showDetailDialog(horse) {
         ]
         ? "Has tapeworm.."
         : "Tapeworm free!";
-
-    /* Name and Likes */
+}
+function generateNameAndLikesInfo(detailDialog, horseObj) {
     detailDialog.querySelector("#detail-name").textContent = horseObj["name"];
     let likesText;
     if (horseObj["likes"] > 0) {
@@ -136,8 +162,8 @@ export async function showDetailDialog(horse) {
         likesText = "No likes/dislikes.";
     }
     detailDialog.querySelector("#detail-likes").textContent = likesText;
-
-    /* General Information */
+}
+function generateGeneralInfo(horseObj, detailDialog) {
     const isMale = horseObj["gender"] === "male";
     detailDialog.querySelector("#detail-generalInformation").textContent = `${
         horseObj["name"]
@@ -149,8 +175,8 @@ export async function showDetailDialog(horse) {
     }ft tall, and can run a ${
         horseObj["topspeed"] >= 40 ? "blistering" : "modest"
     } ${horseObj["topspeed"]}mph.`;
-
-    /* Experience and Registration */
+}
+function generateExperienceAndRegistrationInfo(detailDialog, horseObj) {
     detailDialog.querySelector(
         "#detail-trainingLevel"
     ).textContent = `${horseObj["trainingLevel"]} level of training.`;
@@ -163,8 +189,8 @@ export async function showDetailDialog(horse) {
         ]
         ? "Registered"
         : "Unregistered";
-
-    /* Owner information */
+}
+function generateOwnerInfo(horseObj, detailDialog) {
     const owner = horseObj["owner"];
     for (const key in owner) {
         detailDialog
@@ -174,29 +200,22 @@ export async function showDetailDialog(horse) {
                 /*html*/ `<li>${key}: ${owner[key]}</li>`
             );
     }
-    addDetailDialogEventListeners(detailDialog, horseObj);
 }
-/* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
-//event listeners for detail dialog
+/* event listeners for detail dialog */
 function addDetailDialogEventListeners(detailDialog, horseObj) {
     /* Event listeners for like/dislike buttons */
     const likeButton = detailDialog.querySelector("#detail-like-btn");
     const dislikeButton = detailDialog.querySelector("#detail-dislike-btn");
-
     async function like(event) {
         await addLike(event, likeButton, dislikeButton, horseObj);
     }
-
     async function dislike(event) {
         await removeLike(event, likeButton, dislikeButton, horseObj);
     }
-
     likeButton.addEventListener("click", like);
     dislikeButton.addEventListener("click", dislike);
 
-    /* Show dialog */
-    detailDialog.showModal();
-
+    /* event listeners for closing dialog */
     function clearWithEscape(event) {
         if (event.key === "Escape") {
             window.removeEventListener("keydown", clearWithEscape);
@@ -205,15 +224,12 @@ function addDetailDialogEventListeners(detailDialog, horseObj) {
             clearDetailDialog();
         }
     }
-
     function clearWithButton() {
         detailDialog.querySelector("#detail-cancel-btn").removeEventListener("click", clearWithButton);
         likeButton.removeEventListener("click", like);
         dislikeButton.removeEventListener("click", dislike);
         clearDetailDialog()
     }
-
-    /* Event listeners for closing and resetting the detail dialog */
     //cancel button
     detailDialog.querySelector("#detail-cancel-btn").addEventListener("click", clearWithButton);
     //Keyboard Escape button
