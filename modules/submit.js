@@ -1,6 +1,10 @@
 "use strict";
 
+<<<<<<< HEAD
 import {endpoint, updateHorse, password} from "../main.js";
+=======
+import {endpoint, updateHorse, deleteHorseClicked} from "../main.js";
+>>>>>>> main
 
 /* ========== SUBMIT CREATE ========== */
 //todo add submitCreateForm here
@@ -43,4 +47,22 @@ export validatePassword(password) {
 }
 
 /* ========== SUBMIT DELETE ========== */
-//todo add submitDeleteForm here
+export async function deleteHorse(event, id) {
+    event.preventDefault();
+    const response = await fetch(`${endpoint}/horses/${id}.json`, 
+    {method: "DELETE"});
+    if (response.ok) {
+        const deleteDialog = document.querySelector("#dialogDeleteForm");
+        const deleteForm = document.querySelector("#deleteForm");
+        deleteDialog.close();
+        deleteForm.reset();  
+    }
+}
+
+/* ========== SUBMIT CANCEL IN DELETE ========== */
+export function cancelDelete() {
+    const deleteForm = document.querySelector("#deleteForm");
+    const deleteDialog = document.querySelector("#dialogDeleteForm");
+    deleteDialog.close();
+    deleteForm.reset();
+}
