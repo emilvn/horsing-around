@@ -72,7 +72,10 @@ function fillUpdateForm(horseObj){
 }
 
 /* ========== DELETE DIALOG ========== */
-//todo add showDeleteDialog here
+export function showDeleteDialog() {
+    const deleteForm = document.querySelector("#dialogDeleteForm");
+    deleteForm.showModal();
+}
 
 /* ========== DETAIL DIALOG ========== */
 export async function showDetailDialog(horse){

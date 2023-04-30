@@ -2,6 +2,7 @@
 
 /* ===== Modules ===== */
 import { showToastMessage } from "./modules/dialogs.js";
+import { showDeleteDialog } from "./modules/dialogs.js";
 import { updateGrid } from "./modules/display.js";
 import { inputSearchChanged } from "./modules/search.js";
 
@@ -18,6 +19,7 @@ function main() {
   document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);
   //todo call relevant functions
   //todo add relevant event listeners
+  document.querySelector("button.delete-btn").addEventListener("click", showDeleteDialog)
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
