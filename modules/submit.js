@@ -1,10 +1,6 @@
 "use strict";
 
-<<<<<<< HEAD
-import {endpoint, updateHorse, password} from "../main.js";
-=======
-import {endpoint, updateHorse, deleteHorseClicked} from "../main.js";
->>>>>>> main
+import {endpoint, updateHorse, deleteHorseClicked, password} from "../main.js";
 
 /* ========== SUBMIT CREATE ========== */
 //todo add submitCreateForm here
@@ -41,10 +37,10 @@ export async function submitUpdateForm(event){
     form.parentElement.close();
     form.reset();
 }
-
-export validatePassword(password) {
+export function validatePassword(password){
     
 }
+
 
 /* ========== SUBMIT DELETE ========== */
 export async function deleteHorse(event, id) {
