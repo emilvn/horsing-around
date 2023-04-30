@@ -1,6 +1,9 @@
 "use strict";
 
 /* ========== Horse Array ========== */
+import {deleteHorseClicked} from "./submit";
+import {showDeleteDialog, showUpdateDialog} from "./dialogs";
+
 export let horseArr;
 
 /* ========== UPDATE GRID VIEW ========== */
@@ -15,12 +18,21 @@ export function showHorses(horseArr){
 
 /* ========== SHOW HORSE ========== */
 function showHorse(horseObj){
+    const horseGridContainer = document.querySelector("#horseGrid");
+    const currentHorseArticle = horseGridContainer.querySelector("article:last-child");
     //todo add showHorse here
 
-    const horseGridContainer = document.querySelector("#horseGrid");
+    /* vvvvv DON'T DELETE THESE vvvv */
+    //update button event listener
+    const updateButton = currentHorseArticle.querySelector(".edit-btn");
+    updateButton.addEventListener("click", showUpdateDialog);
 
-    const horseArticleElement = horseGridContainer.querySelector("article:last-child");
-    addToolTip(horseArticleElement);
+    //delete button event listener
+    const deleteButton = currentHorseArticle.querySelector(".delete-btn");
+    deleteButton.addEventListener("click", showDeleteDialog);
+
+    //tooltip for showDetailDialog
+    addToolTip(currentHorseArticle);
 }
 
 /* ========== SORT HORSES ========== */
