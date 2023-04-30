@@ -4,7 +4,7 @@
 //todo add showCreateDialog here
 
 /* ========== UPDATE DIALOG ========== */
-import {submitUpdateForm} from "./submit.js";
+import {deleteHorseClicked, submitUpdateForm} from "./submit.js";
 import {endpoint, getOneHorse} from "../main.js";
 import {addLike, removeLike} from "./like.js";
 
@@ -25,7 +25,7 @@ export function showUpdateDialog(horseObj){
 function fillUpdateForm(horseObj){
     const form = document.querySelector("#update-form");
     /* id */
-    form.horseId.value = horseObj["id"];
+    form.horseID.value = horseObj["id"];
     /* likes */
     form.likes.value = horseObj["likes"];
     /* image */
@@ -73,9 +73,14 @@ function fillUpdateForm(horseObj){
 
 /* ========== DELETE DIALOG ========== */
 export function showDeleteDialog(event) {
-    
-    const deleteForm = document.querySelector("#dialogDeleteForm");
-    deleteForm.showModal();
+    const deleteForm = document.querySelector("#deleteForm");
+    const deleteButton = event.target;
+    const horseIDElement = deleteButton.parentElement.querySelector(".horseID");
+
+    deleteForm.querySelector("#delete-horseID")
+        .textContent = horseIDElement.textContent;
+    deleteForm.addEventListener("submit", deleteHorseClicked);
+    deleteForm.parentElement.showModal();
 }
 
 /* ========== DETAIL DIALOG ========== */
