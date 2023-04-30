@@ -9,6 +9,7 @@ window.addEventListener("load", main);
 
 
 /* ===== Global variables ===== */
+export const password = "emptyyourselfinsideme123"
 export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
