@@ -22,8 +22,9 @@ function main() {
   document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);
   //todo call relevant functions
   //todo add relevant event listeners
-  document.querySelector("button.delete-btn").addEventListener("click", showDeleteDialog)
+  document.querySelector(".delete-btn").addEventListener("click", showDeleteDialog);
   document.querySelector("#cancel-btn-in-delete").addEventListener("click", cancelDelete)
+  document.querySelector("#deleteForm").addEventListener("submit", deleteHorse)
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
@@ -90,4 +91,10 @@ export async function updateHorse(horse, horseID, endpoint) {
 }
 
 /* ========== DELETE ========== */
-//todo add deleteHorse here
+export function deleteHorseClicked(event) {
+  
+  
+  const horseClicked = event.target;
+  const horseId = horseClicked.getAttribute("id");
+  deleteHorse(event, horseId);
+}
