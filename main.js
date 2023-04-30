@@ -1,13 +1,7 @@
 "use strict";
 
 /* ===== Modules ===== */
-import {
-  showToastMessage,
-  closeDeleteDialog,
-  showDetailDialog,
-  showDeleteDialog,
-  showUpdateDialog
-} from "./modules/dialogs.js";
+import { showToastMessage, closeDeleteDialog, showDetailDialog, showDeleteDialog, showUpdateDialog } from "./modules/dialogs.js";
 import { updateGrid } from "./modules/display.js";
 import { inputSearchChanged } from "./modules/search.js";
 
@@ -46,12 +40,12 @@ const horse = {
   "topspeed": 30
 }
 
-
 /* ===== Global variables ===== */
 export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function main() {
+  console.log("main up");
   /* Search event listeners */
   document.querySelector("#searchBar").addEventListener("search", inputSearchChanged);
   document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);
