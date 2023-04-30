@@ -2,6 +2,7 @@
 
 import {showDeleteDialog, showDetailDialog, showUpdateDialog} from "./dialogs.js";
 import {getHorses, endpoint} from "../main.js";
+import {addLike, removeLike} from "./like.js";
 
 /* ========== Horse Array ========== */
 export let horseArr;
@@ -22,21 +23,21 @@ export function showHorses(horseArr) {
 
 /* ========== SHOW HORSE ========== */
 export function showHorse(horseObj) {
-  const horseGridContainer = document.querySelector("#horseGrid");
-  const myHTML = /*html*/ `
+    const horseGridContainer = document.querySelector("#horseGrid");
+    const myHTML = /*html*/ `
         <article id="grid-item">
-          <div>
-            <div class="image-div" style="background-image: url(${horseObj.image})"></div>
-            <h2>${horseObj.name}</h2>
-            <p>${horseObj.age} years old ${horseObj.race} ${(horseObj.gender==="male")?"stallion":"mare"}</p>
-          </div>
-          <div class="grid-item-btns">
-            <span class="hidden horseID">${horseObj.id}</span>
-            <button class="like-btn">Like(<span class="likes">${horseObj.likes}</span>)</button>
-            <button class="dislike-btn">Dislike</button>
-            <button class="delete-btn">Delete</button>
-            <button class="edit-btn">Edit</button>
-          </div>
+            <div>
+                <div class="image-div" style="background-image: url(${horseObj.image})"></div>
+                    <h2>${horseObj.name}</h2>
+                    <p>${horseObj.age} years old ${horseObj.race} ${(horseObj.gender==="male")?"stallion":"mare"}</p>
+                </div>
+            <div class="grid-item-btns">
+                <span class="hidden horseID">${horseObj.id}</span>
+                <button class="like-btn">Like(<span class="likes">${horseObj.likes}</span>)</button>
+                <button class="dislike-btn">Dislike</button>
+                <button class="delete-btn">Delete</button>
+                <button class="edit-btn">Edit</button>
+            </div>
         </article>`;
 
         horseGridContainer.insertAdjacentHTML("beforeend", myHTML);
@@ -44,6 +45,14 @@ export function showHorse(horseObj) {
 
         //detail dialog event listener
         currentHorseArticle.addEventListener("click", ()=> showDetailDialog(horseObj) );
+
+        //like button event listener
+        const likeButton = currentHorseArticle.querySelector(".like-btn");
+        likeButton.addEventListener("click", (event) => addLike(event, likeButton, dislikeButton, horseObj));
+
+        //dislike button event listener
+        const dislikeButton = currentHorseArticle.querySelector(".dislike-btn");
+        dislikeButton.addEventListener("click", (event) => removeLike(event, likeButton, dislikeButton, horseObj));
 
         //update button event listener
         const updateButton = currentHorseArticle.querySelector(".edit-btn");
