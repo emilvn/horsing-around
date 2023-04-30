@@ -25,7 +25,7 @@ function main() {
   //todo add relevant event listeners
   document.querySelector(".delete-btn").addEventListener("click", showDeleteDialog);
   document.querySelector("#cancel-btn-in-delete").addEventListener("click", cancelDelete)
-  document.querySelector("#deleteForm").addEventListener("submit", deleteHorse)
+  document.querySelector("#deleteForm").addEventListener("submit", validatePassword)
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
@@ -93,9 +93,29 @@ export async function updateHorse(horse, horseID, endpoint) {
 
 /* ========== DELETE ========== */
 export function deleteHorseClicked(event) {
-  
-  
+  event.preventDefault();
+  console.log("deleteHorseClicked")
   const horseClicked = event.target;
   const horseId = horseClicked.getAttribute("id");
-  deleteHorse(event, horseId);
+  deleteHorse(event, horseId)
 }
+
+/* ========== VALIDATE PASSWORD ========== */
+
+function validatePassword(event) {
+  event.preventDefault();
+  const deleteForm = document.querySelector("#deleteForm");
+  const passwordValue = document.querySelector("#passwordVerification");
+
+  if(passwordValue.value === password) {
+    console.log("correct password")
+    deleteHorseClicked(event)}
+    else {
+      alert("Wrong password")
+      deleteForm.reset();
+    }
+}
+
+
+
+

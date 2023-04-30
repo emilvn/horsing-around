@@ -1,6 +1,6 @@
 "use strict";
 
-import {endpoint, updateHorse, deleteHorseClicked, password} from "../main.js";
+import {endpoint, updateHorse,} from "../main.js";
 
 /* ========== SUBMIT CREATE ========== */
 //todo add submitCreateForm here
@@ -37,14 +37,13 @@ export async function submitUpdateForm(event){
     form.parentElement.close();
     form.reset();
 }
-export function validatePassword(password){
-    
-}
 
 
 /* ========== SUBMIT DELETE ========== */
 export async function deleteHorse(event, id) {
+    
     event.preventDefault();
+    console.log("horse deleted")
     const response = await fetch(`${endpoint}/horses/${id}.json`, 
     {method: "DELETE"});
     if (response.ok) {
@@ -62,3 +61,4 @@ export function cancelDelete() {
     deleteDialog.close();
     deleteForm.reset();
 }
+
