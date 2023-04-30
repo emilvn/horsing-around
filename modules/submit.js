@@ -1,6 +1,8 @@
 "use strict";
 
-import {endpoint, updateHorse,} from "../main.js";
+import {deleteHorse, endpoint, updateHorse,} from "../main.js";
+import {validatePassword} from "./validation";
+import {showToastMessage} from "./dialogs";
 
 /* ========== SUBMIT CREATE ========== */
 //todo add submitCreateForm here
@@ -9,7 +11,7 @@ import {endpoint, updateHorse,} from "../main.js";
 export async function submitUpdateForm(event){
     event.preventDefault();
     const form = event.target;
-    const horseID = form.horseId.value;
+    const horseID = form.horseID.value;
     const horse = {
         image: form.image.value,
         name: form.horseName.value,
@@ -40,25 +42,28 @@ export async function submitUpdateForm(event){
 
 
 /* ========== SUBMIT DELETE ========== */
-export async function deleteHorse(event, id) {
-    
+async function submitDeleteForm(horseID){
+    const deleteForm = document.querySelector("#deleteForm");
+    deleteForm.removeEventListener("submit", deleteHorseClicked);
+    deleteForm.parentElement.close();
+    await deleteHorse(horseID, endpoint);
+}
+export async function deleteHorseClicked(event) {
     event.preventDefault();
-    console.log("horse deleted")
-    const response = await fetch(`${endpoint}/horses/${id}.json`, 
-    {method: "DELETE"});
-    if (response.ok) {
-        const deleteDialog = document.querySelector("#dialogDeleteForm");
-        const deleteForm = document.querySelector("#deleteForm");
-        deleteDialog.close();
-        deleteForm.reset();  
+    const deleteForm = document.querySelector("#deleteForm");
+    const horseID = deleteForm.querySelector("#delete-horseID");
+    if(validatePassword(deleteForm["password"].value)){
+        await submitDeleteForm(horseID);
+    }
+    else{
+        showToastMessage("Wrong password", "error");
     }
 }
 
 /* ========== SUBMIT CANCEL IN DELETE ========== */
-export function cancelDelete() {
+export function closeDeleteDialog() {
     const deleteForm = document.querySelector("#deleteForm");
-    const deleteDialog = document.querySelector("#dialogDeleteForm");
-    deleteDialog.close();
+    deleteForm.parentElement.close();
     deleteForm.reset();
 }
 
