@@ -1,8 +1,8 @@
 "use strict";
 
 import {deleteHorse, endpoint, updateHorse,} from "../main.js";
-import {validatePassword} from "./validation";
-import {showToastMessage} from "./dialogs";
+import {validatePassword} from "./validation.js";
+import {showToastMessage} from "./dialogs.js";
 
 /* ========== SUBMIT CREATE ========== */
 //todo add submitCreateForm here
