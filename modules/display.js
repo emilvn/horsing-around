@@ -1,7 +1,6 @@
 "use strict";
 
-import { removeLike } from "./like";
-import { deleteHorse } from "./submit";
+import {showDeleteDialog, showDetailDialog, showUpdateDialog} from "./dialogs.js";
 
 /* ========== Horse Array ========== */
 const endpoint =
@@ -23,7 +22,6 @@ export async function getHorses() {
 }
 /* ========== SHOW ALL HORSES ========== */
 export function showHorses(horseArr) {
-  //todo add showHorses here
   document.querySelector("#horseGrid").innerHTML = "";
   for (const horse of horseArr) {
     showHorse(horse);
@@ -34,13 +32,12 @@ export function showHorses(horseArr) {
 
 /* ========== SHOW HORSE ========== */
 export function showHorse(horseObj) {
-  //todo add showHorse here
-  const html = /*html*/ `
-<article id="grid-item">
-<div>
-            <div class="image-div">
-             <img style="background-image:" src="${horseObj.image}">
-            </div>
+  const horseGridContainer = document.querySelector("#horseGrid");
+  const currentHorseArticle = horseGridContainer.querySelector("article:last-child");
+  const myHTML = /*html*/ `
+        <article id="grid-item">
+          <div>
+            <div class="image-div" style="background-image: url(${horseObj.image})"></div>
             <h2>Horse name: ${horseObj.name}</h2>
             <p>Horse race: ${horseObj.race}</p>
             <p>Horse age: ${horseObj.age}</p>
@@ -48,33 +45,31 @@ export function showHorse(horseObj) {
           </div>
           <div class="grid-item-btns">
             <span class="hidden horseID">${horseObj.id}</span>
-            <button class="like-btn">
-              Like(<span class="likes"
-                >${horseObj.likes} </span
-              >)
-            </button>
+            <button class="like-btn">Like(<span class="likes">${horseObj.likes}</span>)</button>
             <button class="dislike-btn">Dislike</button>
             <button class="delete-btn">Delete</button>
             <button class="edit-btn">Edit</button>
           </div>
-</article>
-`;
+        </article>`;
 
-  const horseGridContainer = document.querySelector("#horseGrid");
-  document.querySelector("#horseGrid").insertAdjacentHTML("beforeend", html);
+    horseGridContainer.insertAdjacentHTML("beforeend", myHTML);
 
-  document.querySelector("#like-btn").addEventListener("click", addLike());
-  document
-    .querySelector("#dislike-btn")
-    .addEventListener("click", removeLike());
-  document
-    .querySelector("#delete-btn")
-    .addEventListener("click", deleteHorse());
-  document.querySelector("#edit-btn").addEventListener("click", editHorse());
+    //detail dialog event listener
+    currentHorseArticle.addEventListener("click", ()=> showDetailDialog(horseObj) );
 
-  const horseArticleElement =
-    horseGridContainer.querySelector("article:last-child");
-  addToolTip(horseArticleElement);
+    //update button event listener
+    const updateButton = currentHorseArticle.querySelector(".edit-btn");
+    updateButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        showUpdateDialog(horseObj);
+    });
+
+    //delete button event listener
+    const deleteButton = currentHorseArticle.querySelector(".delete-btn");
+    deleteButton.addEventListener("click", showDeleteDialog);
+
+    //tooltip for showDetailDialog
+    addToolTip(currentHorseArticle);
 }
 
 /* ========== SORT HORSES ========== */

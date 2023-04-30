@@ -1,44 +1,46 @@
 "use strict";
 
+import {deleteHorseClicked, submitUpdateForm} from "./submit.js";
+import {endpoint, getOneHorse} from "../main.js";
+import {addLike, removeLike} from "./like.js";
+
 /* ========== CREATE DIALOG ========== */
 //todo add showCreateDialog here
 
 /* ========== UPDATE DIALOG ========== */
-import { submitUpdateForm } from "./submit.js";
-import { endpoint, getOneHorse } from "../main.js";
-import { addLike, removeLike } from "./like.js";
-
-export function showUpdateDialog(horseObj) {
-  fillUpdateForm(horseObj);
-  const form = document.querySelector("#update-form");
-  form.parentElement.showModal();
-  form.addEventListener("submit", submitUpdateForm);
-  form.querySelector("#update-cancel-btn").addEventListener("click", () => {
-    form.removeEventListener("submit", submitUpdateForm);
-    form.parentElement.close();
-    form.reset();
-  });
+export function showUpdateDialog(horseObj){
+    fillUpdateForm(horseObj);
+    const form = document.querySelector("#update-form");
+    form.parentElement.showModal();
+    form.addEventListener("submit", submitUpdateForm);
+    form.querySelector("#update-cancel-btn")
+        .addEventListener("click", ()=> {
+            form.removeEventListener("submit", submitUpdateForm);
+            form.parentElement.close();
+            form.reset();
+        })
 }
 /* ========== UPDATE HELPER FUNCTIONS ========== */
 // Fills in all the fields in the update form
-function fillUpdateForm(horseObj) {
-  const form = document.querySelector("#update-form");
-  /* id */
-  form.horseId.value = horseObj["id"];
-  /* likes */
-  form.likes.value = horseObj["likes"];
-  /* image */
-  form.image.value = horseObj["image"];
-  /* owner info */
-  form.ownerName.value = horseObj.owner["name"];
-  form.ownerEmail.value = horseObj.owner["email"];
-  form.ownerPhone.value = horseObj.owner["phone"];
-  /* good to know */
-  for (let i = 0; i < form.temperament.options.length; i++) {
-    const option = form.temperament.options[i];
-    if (option.value === horseObj["temperament"]) {
-      option.selected = true;
-      break;
+function fillUpdateForm(horseObj){
+    const form = document.querySelector("#update-form");
+    /* id */
+    form.horseID.value = horseObj["id"];
+    /* likes */
+    form.likes.value = horseObj["likes"];
+    /* image */
+    form.image.value = horseObj["image"];
+    /* owner info */
+    form.ownerName.value = horseObj.owner["name"];
+    form.ownerEmail.value = horseObj.owner["email"];
+    form.ownerPhone.value = horseObj.owner["phone"];
+    /* good to know */
+    for(let i=0; i<form.temperament.options.length; i++){
+        const option = form.temperament.options[i];
+        if(option.value === horseObj["temperament"]){
+            option.selected = true;
+            break;
+        }
     }
   }
   for (let i = 0; i < form.trainingLevel.options.length; i++) {
@@ -72,8 +74,25 @@ function fillUpdateForm(horseObj) {
 
 /* ========== DELETE DIALOG ========== */
 export function showDeleteDialog(event) {
-  const deleteForm = document.querySelector("#dialogDeleteForm");
-  deleteForm.showModal();
+    event.stopPropagation();
+    const deleteForm = document.querySelector("#deleteForm");
+
+    //get id from the horse article where delete was clicked
+    const deleteButton = event.target; //horse article delete button
+    const horseIDElement = deleteButton.parentElement.querySelector(".horseID");
+    console.log(horseIDElement.textContent);
+    deleteForm.querySelector("#delete-horseID")
+        .textContent = horseIDElement.textContent;
+
+    deleteForm.addEventListener("submit", deleteHorseClicked);
+    deleteForm.parentElement.showModal();
+}
+export function closeDeleteDialog() {
+    const deleteForm = document.querySelector("#deleteForm");
+    deleteForm.parentElement.close();
+    deleteForm.reset();
+    deleteForm.querySelector("#delete-horseID")
+        .textContent = "";
 }
 
 /* ========== DETAIL DIALOG ========== */
@@ -181,50 +200,55 @@ export async function showDetailDialog(horse) {
       window.removeEventListener("keydown", clearWithEscape);
       clearDetailDialog();
     }
-  }
-  /* Event listeners for closing and resetting the detail dialog */
-  //cancel button
-  detailDialog
-    .querySelector("#cancel-btn")
-    .addEventListener("click", clearDetailDialog);
-  //Keyboard Escape button
-  window.addEventListener("keydown", clearWithEscape);
+    /* Event listeners for closing and resetting the detail dialog */
+    //cancel button
+    detailDialog.querySelector("#detail-cancel-btn").addEventListener("click", clearDetailDialog);
+    //Keyboard Escape button
+    window.addEventListener("keydown", clearWithEscape);
 }
 
 /* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
 //Clears all fields in the detail dialog
-function clearDetailDialog() {
-  const detailDialog = document.querySelector("#detail-dialog");
-  detailDialog
-    .querySelector("#cancel-btn")
-    .removeEventListener("click", clearDetailDialog);
-  detailDialog.close();
-  detailDialog.querySelector("#detail-like-btn").disabled = false;
-  detailDialog.querySelector("#detail-dislike-btn").disabled = false;
+function clearDetailDialog(){
+    const detailDialog = document.querySelector("#detail-dialog");
+    detailDialog.querySelector("#detail-cancel-btn").removeEventListener("click", clearDetailDialog);
+    detailDialog.close();
+    detailDialog.querySelector("#detail-like-btn").disabled = false;
+    detailDialog.querySelector("#detail-dislike-btn").disabled = false;
 
-  /* Image */
-  detailDialog.querySelector("#detail-image").innerHTML = "";
+    /* Image */
+    detailDialog.querySelector("#detail-image")
+        .innerHTML = "";
 
-  /* Health And Diet info */
-  detailDialog.querySelector("#detail-diet").innerHTML = "";
-  detailDialog.querySelector("#detail-vaccinations").innerHTML = "";
-  detailDialog.querySelector("#detail-hasTapeworm").textContent = "";
+    /* Health And Diet info */
+    detailDialog.querySelector("#detail-diet")
+        .innerHTML = "";
+    detailDialog.querySelector("#detail-vaccinations")
+        .innerHTML = "";
+    detailDialog.querySelector("#detail-hasTapeworm")
+        .textContent = "";
 
-  /* Name and Likes */
-  detailDialog.querySelector("#detail-name").textContent = "";
-  detailDialog.querySelector("#detail-likes").textContent = "";
+    /* Name and Likes */
+    detailDialog.querySelector("#detail-name")
+        .textContent = "";
+    detailDialog.querySelector("#detail-likes")
+        .textContent = "";
 
-  /* General Information */
-  detailDialog.querySelector("#detail-generalInformation").textContent = "";
+    /* General Information */
+    detailDialog.querySelector("#detail-generalInformation")
+        .textContent = "";
 
-  /* Experience and Registration information */
-  detailDialog.querySelector("#detail-trainingLevel").textContent = "";
-  detailDialog.querySelector("#detail-riderExperienceRequired").textContent =
-    "";
-  detailDialog.querySelector("#detail-registered").textContent = "";
+    /* Experience and Registration information */
+    detailDialog.querySelector("#detail-trainingLevel")
+        .textContent = "";
+    detailDialog.querySelector("#detail-riderExperienceRequired")
+        .textContent = "";
+    detailDialog.querySelector("#detail-registered")
+        .textContent = "";
 
-  /* Owner information */
-  detailDialog.querySelector("#detail-owner").innerHTML = "";
+    /* Owner information */
+    detailDialog.querySelector("#detail-owner")
+        .innerHTML = "";
 }
 
 async function updateDetailDialogLikes() {
