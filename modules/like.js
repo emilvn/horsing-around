@@ -5,7 +5,6 @@ import { showToastMessage } from "./dialogs.js";
 export async function addLike(event, likeButton, dislikeButton, horseObj) {
     event.stopPropagation();
     const horseID = horseObj["id"];
-    /*const horseID = likeButton.parentElement.querySelector(".horseID").textContent;*/
     const horse = await getOneHorse(horseID, endpoint);
     const likesAmount = horse["likes"] + 1;
     likeButton.disabled = !dislikeButton.disabled;
@@ -16,7 +15,6 @@ export async function addLike(event, likeButton, dislikeButton, horseObj) {
 export async function removeLike(event, likeButton, dislikeButton, horseObj) {
     event.stopPropagation();
     const horseID = horseObj["id"];
-    /*const horseID = dislikeButton.parentElement.querySelector(".horseID").textContent;*/
     const horse = await getOneHorse(horseID, endpoint);
     const likesAmount = horse["likes"] - 1;
     dislikeButton.disabled = !likeButton.disabled;
@@ -49,12 +47,19 @@ async function updateLikes(likesAmount, horseID, endpoint, button) {
   }
 }
 async function displayUpdatedLikes(button, horseID){
-    const horse = await getOneHorse(horseID, endpoint);
+    const horseObj = await getOneHorse(horseID, endpoint);
     if(button.classList.contains("detailDialog")){
-        document.querySelector("#detail-likes")
-            .textContent = horse["likes"];
+        let likesText;
+        if (horseObj["likes"] > 0) {
+            likesText = horseObj["likes"] + " likes.";
+        } else if (horseObj["likes"] < 0) {
+            likesText = Math.abs(horseObj["likes"]) + " dislikes.";
+        } else {
+            likesText = "No likes/dislikes.";
+        }
+        document.querySelector("#detail-likes").textContent = likesText;
     }
     else{
-        button.querySelector(".likes").textContent = horse["likes"];
+        button.querySelector(".likes").textContent = horseObj["likes"];
     }
 }

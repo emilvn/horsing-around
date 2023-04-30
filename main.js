@@ -110,7 +110,9 @@ export async function getOneHorse(horseID, endpoint) {
   try {
     const response = await fetch(`${endpoint}horses/${horseID}.json`);
     if (response.ok) {
-      return await response.json();
+      const horse = await response.json();
+      horse["id"] = horseID;
+      return horse;
     }
   } catch (err) {
     throw new Error(`Error at getOneHorse: ${err}`);

@@ -104,9 +104,7 @@ export async function showDetailDialog(horse) {
     detailDialog.querySelector("#detail-horseID").textContent = horseID;
 
     /* Image */
-    detailDialog.querySelector(
-        "#detail-image"
-    ).innerHTML = /*html*/ `<img src="${horseObj["image"]}" alt="">`;
+    detailDialog.querySelector("#detail-image").innerHTML = /*html*/ `<img src="${horseObj["image"]}" alt="">`;
 
     /* Health And Diet info */
     const dietArr = horseObj["diet"];
@@ -176,19 +174,21 @@ export async function showDetailDialog(horse) {
                 /*html*/ `<li>${key}: ${owner[key]}</li>`
             );
     }
-
+    addDetailDialogEventListeners(detailDialog, horseObj);
+}
+/* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
+//event listeners for detail dialog
+function addDetailDialogEventListeners(detailDialog, horseObj) {
     /* Event listeners for like/dislike buttons */
     const likeButton = detailDialog.querySelector("#detail-like-btn");
     const dislikeButton = detailDialog.querySelector("#detail-dislike-btn");
 
     async function like(event) {
-        await addLike(event);
-        await updateDetailDialogLikes();
+        await addLike(event, likeButton, dislikeButton, horseObj);
     }
 
     async function dislike(event) {
-        await removeLike(event);
-        await updateDetailDialogLikes();
+        await removeLike(event, likeButton, dislikeButton, horseObj);
     }
 
     likeButton.addEventListener("click", like);
@@ -196,80 +196,72 @@ export async function showDetailDialog(horse) {
 
     /* Show dialog */
     detailDialog.showModal();
-}
+
     function clearWithEscape(event) {
         if (event.key === "Escape") {
             window.removeEventListener("keydown", clearWithEscape);
+            likeButton.removeEventListener("click", like);
+            dislikeButton.removeEventListener("click", dislike);
             clearDetailDialog();
         }
-        /* Event listeners for closing and resetting the detail dialog */
-        //cancel button
-        detailDialog.querySelector("#detail-cancel-btn").addEventListener("click", clearDetailDialog);
-        //Keyboard Escape button
-        window.addEventListener("keydown", clearWithEscape);
     }
 
-    /* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
+    function clearWithButton() {
+        detailDialog.querySelector("#detail-cancel-btn").removeEventListener("click", clearWithButton);
+        likeButton.removeEventListener("click", like);
+        dislikeButton.removeEventListener("click", dislike);
+        clearDetailDialog()
+    }
 
+    /* Event listeners for closing and resetting the detail dialog */
+    //cancel button
+    detailDialog.querySelector("#detail-cancel-btn").addEventListener("click", clearWithButton);
+    //Keyboard Escape button
+    window.addEventListener("keydown", clearWithEscape);
+}
 //Clears all fields in the detail dialog
-    function clearDetailDialog() {
-        const detailDialog = document.querySelector("#detail-dialog");
-        detailDialog.querySelector("#detail-cancel-btn").removeEventListener("click", clearDetailDialog);
-        detailDialog.close();
-        detailDialog.querySelector("#detail-like-btn").disabled = false;
-        detailDialog.querySelector("#detail-dislike-btn").disabled = false;
+function clearDetailDialog() {
+    const detailDialog = document.querySelector("#detail-dialog");
+    detailDialog.close();
+    detailDialog.querySelector("#detail-like-btn").disabled = false;
+    detailDialog.querySelector("#detail-dislike-btn").disabled = false;
 
-        /* Image */
-        detailDialog.querySelector("#detail-image")
-            .innerHTML = "";
+    /* Image */
+    detailDialog.querySelector("#detail-image")
+        .innerHTML = "";
 
-        /* Health And Diet info */
-        detailDialog.querySelector("#detail-diet")
-            .innerHTML = "";
-        detailDialog.querySelector("#detail-vaccinations")
-            .innerHTML = "";
-        detailDialog.querySelector("#detail-hasTapeworm")
-            .textContent = "";
+    /* Health And Diet info */
+    detailDialog.querySelector("#detail-diet")
+        .innerHTML = "";
+    detailDialog.querySelector("#detail-vaccinations")
+        .innerHTML = "";
+    detailDialog.querySelector("#detail-hasTapeworm")
+        .textContent = "";
 
-        /* Name and Likes */
-        detailDialog.querySelector("#detail-name")
-            .textContent = "";
-        detailDialog.querySelector("#detail-likes")
-            .textContent = "";
+    /* Name and Likes */
+    detailDialog.querySelector("#detail-name")
+        .textContent = "";
+    detailDialog.querySelector("#detail-likes")
+        .textContent = "";
 
-        /* General Information */
-        detailDialog.querySelector("#detail-generalInformation")
-            .textContent = "";
+    /* General Information */
+    detailDialog.querySelector("#detail-generalInformation")
+        .textContent = "";
 
-        /* Experience and Registration information */
-        detailDialog.querySelector("#detail-trainingLevel")
-            .textContent = "";
-        detailDialog.querySelector("#detail-riderExperienceRequired")
-            .textContent = "";
-        detailDialog.querySelector("#detail-registered")
-            .textContent = "";
+    /* Experience and Registration information */
+    detailDialog.querySelector("#detail-trainingLevel")
+        .textContent = "";
+    detailDialog.querySelector("#detail-riderExperienceRequired")
+        .textContent = "";
+    detailDialog.querySelector("#detail-registered")
+        .textContent = "";
 
-        /* Owner information */
-        detailDialog.querySelector("#detail-owner")
-            .innerHTML = "";
-    }
+    /* Owner information */
+    detailDialog.querySelector("#detail-owner")
+        .innerHTML = "";
+}
 
-    async function updateDetailDialogLikes() {
-        const horseID = document.querySelector("#detail-horseID").textContent;
-        const horseObj = await getOneHorse(horseID, endpoint);
-        let likesText;
-        if (horseObj["likes"] > 0) {
-            likesText = horseObj["likes"] + " likes.";
-        } else if (horseObj["likes"] < 0) {
-            likesText = Math.abs(horseObj["likes"]) + " dislikes.";
-        } else {
-            likesText = "No likes/dislikes.";
-        }
-        document.querySelector("#detail-likes").textContent = likesText;
-    }
-
-    /* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
-
+/* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
 //type is success or error
 export function showToastMessage(message, type) {
     const toastContainer = document.querySelector("#toast-container");
