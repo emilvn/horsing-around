@@ -41,15 +41,13 @@ export async function submitUpdateForm(event){
 /* ========== SUBMIT DELETE ========== */
 export async function deleteHorse(event, id) {
     event.preventDefault();
-    console.log("Delete clicked")
     const response = await fetch(`${endpoint}/horses/${id}.json`, 
     {method: "DELETE"});
     if (response.ok) {
         const deleteDialog = document.querySelector("#dialogDeleteForm");
         const deleteForm = document.querySelector("#deleteForm");
         deleteDialog.close();
-        deleteForm.reset();
-        
+        deleteForm.reset();  
     }
 }
 
