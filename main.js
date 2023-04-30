@@ -1,7 +1,13 @@
 "use strict";
 
 /* ===== Modules ===== */
-import {showToastMessage, closeDeleteDialog, showDetailDialog} from "./modules/dialogs.js";
+import {
+  showToastMessage,
+  closeDeleteDialog,
+  showDetailDialog,
+  showDeleteDialog,
+  showUpdateDialog
+} from "./modules/dialogs.js";
 import { updateGrid } from "./modules/display.js";
 import { inputSearchChanged } from "./modules/search.js";
 
@@ -56,9 +62,14 @@ function main() {
   //todo add relevant event listeners
 
   /* vvvvv TEST EVENT LISTENERS vvvvv*/
+
   //remove these when display funcs are working
   document.querySelector("#horseGrid article").addEventListener("click", ()=>showDetailDialog(horse));
-
+  document.querySelector(".delete-btn").addEventListener("click", showDeleteDialog);
+  document.querySelector(".edit-btn").addEventListener("click", (event) => {
+    event.stopPropagation();
+    showUpdateDialog(horse);
+  });
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {

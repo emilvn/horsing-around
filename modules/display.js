@@ -27,7 +27,10 @@ function showHorse(horseObj){
 
     //update button event listener
     const updateButton = currentHorseArticle.querySelector(".edit-btn");
-    updateButton.addEventListener("click", showUpdateDialog);
+    updateButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        showUpdateDialog(horseObj);
+    });
 
     //delete button event listener
     const deleteButton = currentHorseArticle.querySelector(".delete-btn");

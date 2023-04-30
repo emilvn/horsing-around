@@ -1,13 +1,14 @@
 "use strict";
 
-/* ========== CREATE DIALOG ========== */
-//todo add showCreateDialog here
-
-/* ========== UPDATE DIALOG ========== */
 import {deleteHorseClicked, submitUpdateForm} from "./submit.js";
 import {endpoint, getOneHorse} from "../main.js";
 import {addLike, removeLike} from "./like.js";
 
+/* ========== CREATE DIALOG ========== */
+//todo add showCreateDialog here
+
+
+/* ========== UPDATE DIALOG ========== */
 export function showUpdateDialog(horseObj){
     fillUpdateForm(horseObj);
     const form = document.querySelector("#update-form");
@@ -73,6 +74,7 @@ function fillUpdateForm(horseObj){
 
 /* ========== DELETE DIALOG ========== */
 export function showDeleteDialog(event) {
+    event.stopPropagation();
     const deleteForm = document.querySelector("#deleteForm");
 
     //get id from the horse article where delete was clicked
