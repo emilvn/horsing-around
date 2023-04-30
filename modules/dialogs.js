@@ -82,6 +82,11 @@ export function showDeleteDialog(event) {
     deleteForm.addEventListener("submit", deleteHorseClicked);
     deleteForm.parentElement.showModal();
 }
+export function closeDeleteDialog() {
+    const deleteForm = document.querySelector("#deleteForm");
+    deleteForm.parentElement.close();
+    deleteForm.reset();
+}
 
 /* ========== DETAIL DIALOG ========== */
 export async function showDetailDialog(horse){

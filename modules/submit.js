@@ -60,10 +60,3 @@ export async function deleteHorseClicked(event) {
     }
 }
 
-/* ========== SUBMIT CANCEL IN DELETE ========== */
-export function closeDeleteDialog() {
-    const deleteForm = document.querySelector("#deleteForm");
-    deleteForm.parentElement.close();
-    deleteForm.reset();
-}
-
