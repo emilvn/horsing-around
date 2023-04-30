@@ -1,47 +1,34 @@
 "use strict";
 
 import {showDeleteDialog, showDetailDialog, showUpdateDialog} from "./dialogs.js";
+import {getHorses, endpoint} from "../main.js";
 
 /* ========== Horse Array ========== */
-const endpoint =
-  "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 export let horseArr;
 
 /* ========== UPDATE GRID VIEW ========== */
 export async function updateGrid() {
-  //todo add updateGrid here
-  horseArr = await getHorses(); // get posts from rest endpoint and save in global variable
+  horseArr = await getHorses(endpoint); // get posts from rest endpoint and save in global variable
   showHorses(horseArr); // show all posts (append to the DOM) with posts as argument
 }
-export async function getHorses() {
-  const response = await fetch(`${endpoint}/horses.json`); // fetch request, (GET)
-  const data = await response.json(); // parse JSON to JavaScript
-  const horses = prepareData(data); // convert object of object to array of objects
-  console.log("getHorsesKører");
-  return horses; // return horses
-}
+
 /* ========== SHOW ALL HORSES ========== */
 export function showHorses(horseArr) {
   document.querySelector("#horseGrid").innerHTML = "";
   for (const horse of horseArr) {
     showHorse(horse);
   }
-
-  console.log("showHorses kører");
 }
 
 /* ========== SHOW HORSE ========== */
 export function showHorse(horseObj) {
   const horseGridContainer = document.querySelector("#horseGrid");
-  const currentHorseArticle = horseGridContainer.querySelector("article:last-child");
   const myHTML = /*html*/ `
         <article id="grid-item">
           <div>
             <div class="image-div" style="background-image: url(${horseObj.image})"></div>
-            <h2>Horse name: ${horseObj.name}</h2>
-            <p>Horse race: ${horseObj.race}</p>
-            <p>Horse age: ${horseObj.age}</p>
-            <p>Horse gender ${horseObj.gender}</p>
+            <h2>${horseObj.name}</h2>
+            <p>${horseObj.age} years old ${horseObj.race} ${(horseObj.gender==="male")?"stallion":"mare"}</p>
           </div>
           <div class="grid-item-btns">
             <span class="hidden horseID">${horseObj.id}</span>
@@ -52,24 +39,25 @@ export function showHorse(horseObj) {
           </div>
         </article>`;
 
-    horseGridContainer.insertAdjacentHTML("beforeend", myHTML);
+        horseGridContainer.insertAdjacentHTML("beforeend", myHTML);
+        const currentHorseArticle = horseGridContainer.querySelector("article:last-child");
 
-    //detail dialog event listener
-    currentHorseArticle.addEventListener("click", ()=> showDetailDialog(horseObj) );
+        //detail dialog event listener
+        currentHorseArticle.addEventListener("click", ()=> showDetailDialog(horseObj) );
 
-    //update button event listener
-    const updateButton = currentHorseArticle.querySelector(".edit-btn");
-    updateButton.addEventListener("click", (event) => {
+        //update button event listener
+        const updateButton = currentHorseArticle.querySelector(".edit-btn");
+        updateButton.addEventListener("click", (event) => {
         event.stopPropagation();
         showUpdateDialog(horseObj);
-    });
+        });
 
-    //delete button event listener
-    const deleteButton = currentHorseArticle.querySelector(".delete-btn");
-    deleteButton.addEventListener("click", showDeleteDialog);
+        //delete button event listener
+        const deleteButton = currentHorseArticle.querySelector(".delete-btn");
+        deleteButton.addEventListener("click", showDeleteDialog);
 
-    //tooltip for showDetailDialog
-    addToolTip(currentHorseArticle);
+        //tooltip for showDetailDialog
+        addToolTip(currentHorseArticle);
 }
 
 /* ========== SORT HORSES ========== */

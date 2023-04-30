@@ -11,8 +11,8 @@ export function inputSearchChanged(event) {
 function searchHorses(searchValue) {
   return horseArr.filter(
     (horse) =>
-      horse["name"].includes(searchValue) ||
-      horse["race"].includes(searchValue) ||
-      horse["color"].includes(searchValue)
+        (horse["name"].toLowerCase().includes(searchValue.toLowerCase())
+            || horse["race"].toLowerCase().includes(searchValue.toLowerCase())
+            || horse["color"].toLowerCase().includes(searchValue.toLowerCase()))
   );
 }

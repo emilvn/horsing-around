@@ -44,8 +44,10 @@ const horse = {
 export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
-function main() {
+async function main() {
   console.log("main up");
+  /* Show horses */
+  await updateGrid();
   /* Search event listeners */
   document.querySelector("#searchBar").addEventListener("search", inputSearchChanged);
   document.querySelector("#searchBar").addEventListener("keyup", inputSearchChanged);
@@ -83,7 +85,13 @@ export async function addHorse(horseObj, endpoint) {
 }
 
 /* ========== READ ALL========== */
-//todo add getHorses here
+export async function getHorses(endpoint) {
+  const response = await fetch(`${endpoint}/horses.json`); // fetch request, (GET)
+  const data = await response.json(); // parse JSON to JavaScript
+  const horses = prepareData(data); // convert object of object to array of objects
+  console.log("getHorsesKører");
+  return horses; // return horses
+}
 
 /* ========== Data preparation for getHorses ========== */
 // use in getHorses to change the fetched data from object to array.
