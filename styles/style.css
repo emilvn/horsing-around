@@ -19,6 +19,7 @@ html{
     height: 100%;
 }
 body{
+    user-select: none;
     background-color: var(--body-background-color);
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -263,6 +264,7 @@ nav{
     border-radius: 0.5em;
     font-family: Arial, sans-serif;
     font-size: 1.5em;
+    pointer-events: none;
 }
 
 .toast.success {
