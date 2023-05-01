@@ -1,6 +1,6 @@
 "use strict";
-import { endpoint, getOneHorse } from "../main.js";
-import { showToastMessage } from "./dialogs.js";
+import { endpoint, getOneHorse } from "../../main.js";
+import { showToastMessage } from "../display/toastMessage.js";
 
 export async function addLike(event, likeButton, dislikeButton, horseObj) {
     event.stopPropagation();

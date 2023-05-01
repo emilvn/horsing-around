@@ -1,9 +1,10 @@
 "use strict";
 
 /* ===== Modules ===== */
-import { showToastMessage, closeDeleteDialog, showDetailDialog, showDeleteDialog, showUpdateDialog } from "./modules/dialogs.js";
-import { updateGrid } from "./modules/display.js";
-import { inputSearchChanged } from "./modules/search.js";
+import { closeDeleteDialog } from "./modules/dialogs/deleteDialog.js";
+import { showToastMessage } from "./modules/display/toastMessage.js";
+import { updateGrid } from "./modules/display/display.js";
+import { inputSearchChanged } from "./modules/searchAndSort/search.js";
 
 window.addEventListener("load", main);
 

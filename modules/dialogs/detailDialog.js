@@ -1,107 +1,7 @@
 "use strict";
 
-import {deleteHorseClicked, submitUpdateForm} from "./submit.js";
-import {endpoint, getOneHorse} from "../main.js";
-import {addLike, removeLike} from "./like.js";
-
-/* ========== CREATE DIALOG ========== */
-//todo add showCreateDialog here
-
-/* ========== UPDATE DIALOG ========== */
-export function showUpdateDialog(horseObj){
-    fillUpdateForm(horseObj);
-    const form = document.querySelector("#update-form");
-    form.parentElement.showModal();
-    form.addEventListener("submit", submitUpdateForm);
-    form.querySelector("#update-cancel-btn")
-        .addEventListener("click", ()=> {
-            form.removeEventListener("submit", submitUpdateForm);
-            form.parentElement.close();
-            form.reset();
-        })
-}
-/* ========== UPDATE HELPER FUNCTIONS ========== */
-// Fills in all the fields in the update form
-function fillUpdateForm(horseObj){
-    const form = document.querySelector("#update-form");
-    /* id */
-    form.horseID.value = horseObj["id"];
-    /* likes */
-    form.likes.value = horseObj["likes"];
-    /* image */
-    form.image.value = horseObj["image"];
-
-    /* owner info */
-    form.ownerName.value = horseObj.owner["name"];
-    form.ownerEmail.value = horseObj.owner["email"];
-    form.ownerPhone.value = horseObj.owner["phone"];
-
-    /* good to know */
-    fillExperienceAndRegistrationInputs(form, horseObj);
-    /* General information */
-    fillGeneralInformationInputs(form, horseObj);
-
-    /* Health and diet */
-    form.diet.value = horseObj["diet"].join(", ");
-    form.vaccinations.value = horseObj["vaccinations"].join(", ");
-    form.hasTapeworm.checked = horseObj["hasTapeworm"];
-}
-function fillExperienceAndRegistrationInputs(form, horseObj) {
-    for (let i = 0; i < form.temperament.options.length; i++) {
-        const option = form.temperament.options[i];
-        if (option.value === horseObj["temperament"]) {
-            option.selected = true;
-            break;
-        }
-    }
-    for (let i = 0; i < form.trainingLevel.options.length; i++) {
-        const option = form.trainingLevel.options[i];
-        if (option.value === horseObj["trainingLevel"]) {
-            option.selected = true;
-            break;
-        }
-    }
-    form.riderExperienceRequired.checked = horseObj["riderExperienceRequired"];
-    form.registered.checked = horseObj["registered"];
-}
-function fillGeneralInformationInputs(form, horseObj) {
-    form.horseName.value = horseObj["name"];
-    form.age.value = horseObj["age"];
-    form.horseRace.value = horseObj["race"];
-    form.horseColor.value = horseObj["color"];
-    for (let i = 0; i < form.gender.length; i++) {
-        const radioInput = form.gender[i];
-        if (radioInput.value === horseObj["gender"]) {
-            radioInput.checked = true;
-            break;
-        }
-    }
-    form.height.value = horseObj["height"];
-    form.topspeed.value = horseObj["topspeed"];
-}
-
-/* ========== DELETE DIALOG ========== */
-export function showDeleteDialog(event) {
-    event.stopPropagation();
-    const deleteForm = document.querySelector("#deleteForm");
-
-    //get id from the horse article where delete was clicked
-    const deleteButton = event.target; //horse article delete button
-    const horseIDElement = deleteButton.parentElement.querySelector(".horseID");
-    console.log(horseIDElement.textContent);
-    deleteForm.querySelector("#delete-horseID")
-        .textContent = horseIDElement.textContent;
-
-    deleteForm.addEventListener("submit", deleteHorseClicked);
-    deleteForm.parentElement.showModal();
-}
-export function closeDeleteDialog() {
-    const deleteForm = document.querySelector("#deleteForm");
-    deleteForm.parentElement.close();
-    deleteForm.reset();
-    deleteForm.querySelector("#delete-horseID")
-        .textContent = "";
-}
+import {endpoint, getOneHorse} from "../../main.js";
+import {addLike, removeLike} from "../likes/like.js";
 
 /* ========== DETAIL DIALOG ========== */
 export async function showDetailDialog(horse) {
@@ -275,18 +175,4 @@ function clearDetailDialog() {
     /* Owner information */
     detailDialog.querySelector("#detail-owner")
         .innerHTML = "";
-}
-
-/* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
-//type is success or error
-export function showToastMessage(message, type) {
-    const toastContainer = document.querySelector("#toast-container");
-    const toast = document.createElement("div");
-    toast.textContent = message;
-    toast.classList.add("toast", type);
-    toastContainer.appendChild(toast);
-
-    setTimeout(() => {
-            toastContainer.removeChild(toast);
-            }, 3000);
 }
