@@ -8,8 +8,8 @@ export async function sortHorses(event) {
     
     function sortBy(a,b) {
         if (select.value === "likes") {
-            return a.likes-b.likes; 
-        } else if (select.value === "names") {
+            return b.likes-a.likes;
+        } else if (select.value === "name") {
             return a.name.localeCompare(b.name);
         } else if (select.value === "race") {
             return a.race.localeCompare(b.race);
@@ -17,6 +17,5 @@ export async function sortHorses(event) {
     }
 
     horseArr.sort(sortBy)
-    
     showHorses(horseArr);
 }
