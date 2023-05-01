@@ -9,7 +9,7 @@ export async function addLike(event, likeButton, dislikeButton, horseObj) {
     const likesAmount = horse["likes"] + 1;
     likeButton.disabled = !dislikeButton.disabled;
     dislikeButton.disabled = false;
-    await updateLikes(likesAmount, horseID, endpoint, likeButton);
+    await updateLikes(likesAmount, horseID, endpoint, likeButton, "like");
 }
 
 export async function removeLike(event, likeButton, dislikeButton, horseObj) {
@@ -19,12 +19,12 @@ export async function removeLike(event, likeButton, dislikeButton, horseObj) {
     const likesAmount = horse["likes"] - 1;
     dislikeButton.disabled = !likeButton.disabled;
     likeButton.disabled = false;
-    await updateLikes(likesAmount, horseID, endpoint, likeButton);
+    await updateLikes(likesAmount, horseID, endpoint, likeButton, "dislike");
 }
 
 /* ========== HTTP PATCH ========== */
 //sends patch request with the updated amount of likes
-async function updateLikes(likesAmount, horseID, endpoint, button) {
+async function updateLikes(likesAmount, horseID, endpoint, button, likeType) {
     // location is "detailDialog" or "horseGrid"
     try {
     const response = await fetch(`${endpoint}horses/${horseID}.json`, {
@@ -35,11 +35,13 @@ async function updateLikes(likesAmount, horseID, endpoint, button) {
         }),
     });
     if (response.ok) {
-        showToastMessage("Horse liked/disliked", "success");
+        if(likeType === "like") showToastMessage("Horse liked", "success");
+        else showToastMessage("Horse disliked", "success");
         console.log("Horse like added successfully");
         await displayUpdatedLikes(button, horseID);
     } else {
-        showToastMessage("Horse like/dislike failed", "error");
+        if(likeType === "like") showToastMessage("Horse like failed", "error");
+        else showToastMessage("Horse dislike failed", "error");
         console.log("Bad response at updateLikes");
     }
     } catch (err) {
