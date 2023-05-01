@@ -1,0 +1,12 @@
+.fade-out{
+    animation-name: fade-out;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+    100%{
+        opacity: 1;
+    }
+}
