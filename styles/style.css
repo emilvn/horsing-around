@@ -78,7 +78,7 @@ nav{
 
 /* ========== forms ========== */
 /* UPDATE FORM */
-#update-dialog{
+#update-dialog, #create-dialog{
     text-align: center;
     z-index: 9999;
 }
@@ -86,14 +86,14 @@ nav{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-#update-form fieldset{
+#update-form, #create-form fieldset{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-#update-form fieldset input, select, textarea{
+#update-form, #create-form fieldset input, select, textarea{
     margin: 0.5em;
 }
-#update-buttons{
+#update-buttons, #create-buttons{
     margin: 1em;
     display: flex;
     justify-content: space-between;
@@ -231,7 +231,7 @@ nav{
 }
 #detail-diet, #detail-vaccinations{
     display: grid;
-    grid-template-rows: 0.5em;
+    grid-template-rows: 1em;
     grid-template-columns: auto auto auto;
 }
 #detail-vaccinations{

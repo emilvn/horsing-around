@@ -6,7 +6,7 @@ export async function addLike(event, likeButton, dislikeButton, horseObj) {
     event.stopPropagation();
     const horseID = horseObj["id"];
     const horse = await getOneHorse(horseID, endpoint);
-    const likesAmount = horse["likes"] + 1;
+    const likesAmount = Number(horse["likes"]) + 1;
     likeButton.disabled = !dislikeButton.disabled;
     dislikeButton.disabled = false;
     await updateLikes(likesAmount, horseID, endpoint, likeButton, "like");
@@ -16,7 +16,7 @@ export async function removeLike(event, likeButton, dislikeButton, horseObj) {
     event.stopPropagation();
     const horseID = horseObj["id"];
     const horse = await getOneHorse(horseID, endpoint);
-    const likesAmount = horse["likes"] - 1;
+    const likesAmount = Number(horse["likes"]) - 1;
     dislikeButton.disabled = !likeButton.disabled;
     likeButton.disabled = false;
     await updateLikes(likesAmount, horseID, endpoint, likeButton, "dislike");
