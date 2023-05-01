@@ -8,7 +8,7 @@ export function showToastMessage(message, type) {
     toast.textContent = message;
     toast.classList.add("toast", type);
     toastContainer.appendChild(toast);
-
+    toast.classList.add("fade-out");
     setTimeout(() => {
             toastContainer.removeChild(toast);
             }, 3000);
