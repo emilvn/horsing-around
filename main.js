@@ -7,6 +7,7 @@ import { updateGrid } from "./modules/display/display.js";
 import { inputSearchChanged } from "./modules/searchAndSort/search.js";
 import { sortHorses } from "./modules/searchAndSort/sort.js";
 
+
 window.addEventListener("load", main);
 
 /* ===== Global variables ===== */
@@ -26,7 +27,9 @@ async function main() {
     document.querySelector("#delete-cancel-btn").addEventListener("click", closeDeleteDialog);
 
      /* sort horses on change in sort menu */
-     document.querySelector("#sortBy").addEventListener("onchange", sortHorses);
+     
+     document.querySelector("#sortBy").addEventListener("change", sortHorses);
+     
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {

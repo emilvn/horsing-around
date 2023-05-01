@@ -74,9 +74,6 @@ function addShowHorseEventListeners(currentHorseArticle, horseObj) {
     deleteButton.addEventListener("click", showDeleteDialog);
 }
 
-/* ========== SORT HORSES ========== */
-//todo add sortHorses here
-
 /* ========== TOOLTIP FOR DETAIL DIALOG ========== */
 function addToolTip(horseArticleElement) {
     const tooltip = document.querySelector("#detail-tooltip");
