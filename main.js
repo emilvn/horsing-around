@@ -5,6 +5,7 @@ import { closeDeleteDialog } from "./modules/dialogs/deleteDialog.js";
 import { showToastMessage } from "./modules/display/toastMessage.js";
 import { updateGrid } from "./modules/display/display.js";
 import { inputSearchChanged } from "./modules/searchAndSort/search.js";
+import { sortHorses } from "./modules/searchAndSort/sort.js";
 
 window.addEventListener("load", main);
 
@@ -23,6 +24,9 @@ async function main() {
 
     /* close delete dialog */
     document.querySelector("#delete-cancel-btn").addEventListener("click", closeDeleteDialog);
+
+     /* sort horses on change in sort menu */
+     document.querySelector("#sortBy").addEventListener("onchange", sortHorses);
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
