@@ -1,5 +1,5 @@
 "use strict";
-
+import { submitCreateForm } from "../submit/submit.js";
 /* ========== CREATE DIALOG ========== */
 export function showCreateDialog() {
   const form = document.querySelector("#create-form");
