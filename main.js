@@ -8,7 +8,6 @@ import { inputSearchChanged } from "./modules/searchAndSort/search.js";
 import { showCreateDialog } from "./modules/dialogs/createDialog.js";
 import { sortHorses } from "./modules/searchAndSort/sort.js";
 
-
 window.addEventListener("load", main);
 
 /* ===== Global variables ===== */
@@ -21,7 +20,6 @@ async function main() {
   await updateGrid();
 
   /* Create dialog */
-
   document
     .querySelector("#add-horse-dialog-button")
     .addEventListener("click", showCreateDialog);
@@ -42,6 +40,7 @@ async function main() {
      document.querySelector("#sortBy").addEventListener("change", sortHorses);
      
 }
+
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
   const json = JSON.stringify(horseObj);
