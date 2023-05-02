@@ -31,7 +31,7 @@ export async function showDetailDialog(horse) {
 /* ========== DETAIL DIALOG HELPER FUNCTIONS ========== */
 // Detail information generation
 function generateHealthAndDietInfo(horseObj, detailDialog) {
-    const dietArr = horseObj["diet"] || [];
+    const dietArr = (horseObj["diet"].length)? horseObj["diet"] : [];
     if(dietArr.length){
         for (const food of dietArr) {
             detailDialog
@@ -39,7 +39,7 @@ function generateHealthAndDietInfo(horseObj, detailDialog) {
                 .insertAdjacentHTML("beforeend", /*html*/ `<li>${food}</li>`);
         }
     }
-    const vaccinationsArr = horseObj["vaccinations"] || [];
+    const vaccinationsArr = (horseObj["vaccinations"].length)?horseObj["vaccinations"] : [];
     if(vaccinationsArr.length){
         for (const vaccination of vaccinationsArr) {
             detailDialog
