@@ -205,6 +205,11 @@ nav{
     background-color: white;
     border-radius: 1em;
 }
+@media (max-width: 700px) {
+    #detail-grid{
+        grid-template-columns: 1fr;
+    }
+}
 #detail-image-div{
     overflow: clip;
     border-radius: 1em;
@@ -234,8 +239,13 @@ nav{
     grid-template-rows: 1em;
     grid-template-columns: auto auto auto;
 }
+@media (max-width: 900px) {
+    #detail-diet, #detail-vaccinations{
+        grid-template-columns: auto auto;
+    }
+}
 #detail-vaccinations{
-    grid-template-rows: 0.5em 0.5em;
+    grid-template-rows: 1em 1em;
 }
 #detail-like-btns{
     display: flex;
