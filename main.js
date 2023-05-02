@@ -16,7 +16,6 @@ export const endpoint =
   "https://gallopgalore-80085-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function main() {
-  console.log("main up");
 
   /* Show horses */
   await updateGrid();
@@ -121,7 +120,7 @@ export async function deleteHorse(horseID, endpoint) {
   });
   if (response.ok) {
     console.log("horse deleted");
-    showToastMessage("Horse deleted successfully!", "error");
+    showToastMessage("Horse deleted successfully!", "success");
   } else {
     console.log("Bad response at deleteHorse");
     showToastMessage("Couldn't delete horse.", "error");
