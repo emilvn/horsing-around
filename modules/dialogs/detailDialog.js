@@ -64,13 +64,19 @@ function generateNameAndLikesInfo(detailDialog, horseObj) {
 }
 function generateGeneralInfo(horseObj, detailDialog) {
     const isMale = horseObj["gender"] === "male";
-    detailDialog.querySelector("#detail-generalInformation").textContent = `${
-        horseObj["name"]
-    } is a ${horseObj["age"]} year-old, very ${horseObj["temperament"].toLowerCase()}, ${horseObj["color"].toLowerCase()||""} ${horseObj["race"].toLowerCase()} 
-        ${isMale ? "stallion" : "mare"}.
-        ${isMale ? "He" : "She"} 
-        ${(horseObj["height"])?`is ${horseObj["height"]} hands tall.`:""}, 
-        ${(horseObj["topspeed"])?`Can run a ${horseObj["topspeed"] >= 40 ? "blistering" : "modest"} ${horseObj["topspeed"]}mph.`:""}`;
+    const temperament = horseObj["temperament"].toLowerCase();
+    const color = horseObj["color"].toLowerCase()||"";
+    const race = horseObj["race"].toLowerCase();
+    const gender = isMale ? "stallion" : "mare";
+    const pronoun = isMale ? "He" : "She";
+    const heightDescription = (horseObj["height"])?`is ${horseObj["height"]} hands tall.`:"";
+    const topspeedDescription = (horseObj["topspeed"])?`Can run a ${horseObj["topspeed"] >= 40 ? "blistering" : "modest"} ${horseObj["topspeed"]}mph.`:"";
+    detailDialog.querySelector("#detail-generalInformation")
+        .textContent = `
+        ${horseObj["name"]} is a ${horseObj["age"]} year-old, very ${temperament} 
+        ${color} ${race} ${gender}.
+        ${pronoun} ${heightDescription} ${topspeedDescription}
+        `;
 }
 function generateExperienceAndRegistrationInfo(detailDialog, horseObj) {
     detailDialog.querySelector(
