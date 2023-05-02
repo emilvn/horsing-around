@@ -66,24 +66,24 @@ function generateGeneralInfo(horseObj, detailDialog) {
     const isMale = horseObj["gender"] === "male";
     detailDialog.querySelector("#detail-generalInformation").textContent = `${
         horseObj["name"]
-    } is a ${horseObj["age"]} year-old, very ${horseObj["temperament"]}, ${horseObj["color"]||""} ${horseObj["race"].toLowerCase()} 
+    } is a ${horseObj["age"]} year-old, very ${horseObj["temperament"].toLowerCase()}, ${horseObj["color"].toLowerCase()||""} ${horseObj["race"].toLowerCase()} 
         ${isMale ? "stallion" : "mare"}.
         ${isMale ? "He" : "She"} 
-        ${(horseObj["height"])?`is ${horseObj["height"]}ft tall`:""}, 
+        ${(horseObj["height"])?`is ${horseObj["height"]} hands tall.`:""}, 
         ${(horseObj["topspeed"])?`Can run a ${horseObj["topspeed"] >= 40 ? "blistering" : "modest"} ${horseObj["topspeed"]}mph.`:""}`;
 }
 function generateExperienceAndRegistrationInfo(detailDialog, horseObj) {
     detailDialog.querySelector(
         "#detail-trainingLevel"
-    ).textContent = `${horseObj["trainingLevel"]} level of training.`;
+    ).textContent = `Level of training: ${horseObj["trainingLevel"]}.`;
     detailDialog.querySelector("#detail-riderExperienceRequired")
         .textContent = horseObj["riderExperienceRequired"]
             ? "Rider experience is required."
-            : "Beginner friendly";
+            : "Beginner friendly.";
     detailDialog.querySelector("#detail-registered")
         .textContent = horseObj["registered"]
-            ? "Registered"
-            : "Unregistered";
+            ? "Registered."
+            : "Unregistered.";
 }
 function generateOwnerInfo(horseObj, detailDialog) {
     const owner = horseObj["owner"];
