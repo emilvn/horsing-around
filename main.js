@@ -121,6 +121,7 @@ export async function deleteHorse(horseID, endpoint) {
   if (response.ok) {
     console.log("horse deleted");
     showToastMessage("Horse deleted successfully!", "success");
+    await updateGrid();
   } else {
     console.log("Bad response at deleteHorse");
     showToastMessage("Couldn't delete horse.", "error");
