@@ -86,9 +86,9 @@ export async function getOneHorse(horseID, endpoint) {
     try {
         const response = await fetch(`${endpoint}horses/${horseID}.json`);
         if (response.ok) {
-        const horse = await response.json();
-        horse["id"] = horseID;
-        return horse;
+            const horse = await response.json();
+            horse["id"] = horseID;
+            return horse;
         }
         else{
             showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
@@ -122,7 +122,6 @@ export async function updateHorse(horse, horseID, endpoint) {
 /* ========== DELETE ========== */
 export async function deleteHorse(horseID, endpoint) {
     try{
-
         const response = await fetch(`${endpoint}/horses/${horseID}.json`, {
             method: "DELETE",
         });
