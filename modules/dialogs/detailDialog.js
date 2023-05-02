@@ -1,5 +1,3 @@
-"use strict";
-
 import {endpoint, getOneHorse} from "../../main.js";
 import {addLike, removeLike} from "../likes/like.js";
 

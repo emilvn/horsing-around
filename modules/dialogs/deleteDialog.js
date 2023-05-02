@@ -1,5 +1,3 @@
-"use strict";
-
 import {deleteHorseClicked} from "../submit/submit.js";
 
 /* ========== DELETE DIALOG ========== */

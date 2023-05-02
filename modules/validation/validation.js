@@ -1,5 +1,3 @@
-"use strict";
-
 /* ========== VALIDATE PASSWORD ========== */
 export function validatePassword(pwd) {
     /*const password = "emptyyourselfinsideme123";*/

@@ -1,4 +1,3 @@
-"use strict";
 import { endpoint, getOneHorse } from "../../main.js";
 import { showToastMessage } from "../display/toastMessage.js";
 

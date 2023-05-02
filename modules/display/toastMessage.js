@@ -1,5 +1,3 @@
-"use strict";
-
 /* ========== SUCCESS/ERROR TOAST MESSAGE ========== */
 //type is success or error
 export function showToastMessage(message, type) {

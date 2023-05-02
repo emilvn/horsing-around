@@ -1,4 +1,3 @@
-"use strict";
 import {showDeleteDialog} from "../dialogs/deleteDialog.js";
 import {showUpdateDialog} from "../dialogs/updateDialog.js";
 import {showDetailDialog} from "../dialogs/detailDialog.js";

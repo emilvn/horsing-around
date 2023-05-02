@@ -1,8 +1,5 @@
-"use strict";
-
-/* ========== SEARCH BY NAME/RACE/COLOR ========== */
 import { horseArr, showHorses } from "../display/display.js";
-
+/* ========== SEARCH BY NAME/RACE/COLOR ========== */
 export function inputSearchChanged(event) {
     const searchValue = event.target.value;
     const filteredHorses = searchHorses(searchValue);

@@ -1,7 +1,5 @@
-"use strict";
 import { showHorses } from "../display/display.js";
 import { horseArr } from "../display/display.js";
-
 
 export async function sortHorses(event) {
     const select = event.target;
@@ -15,7 +13,6 @@ export async function sortHorses(event) {
             return a.race.localeCompare(b.race);
         }
     }
-
     horseArr.sort(sortBy)
     showHorses(horseArr);
 }

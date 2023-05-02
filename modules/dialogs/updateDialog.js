@@ -1,5 +1,3 @@
-"use strict";
-
 import {submitUpdateForm} from "../submit/submit.js";
 
 /* ========== UPDATE DIALOG ========== */

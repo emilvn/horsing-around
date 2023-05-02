@@ -1,5 +1,3 @@
-"use strict";
-
 import { addHorse, deleteHorse, endpoint, updateHorse } from "../../main.js";
 import { validatePassword } from "../validation/validation.js";
 import { showToastMessage } from "../display/toastMessage.js";

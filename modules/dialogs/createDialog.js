@@ -1,4 +1,3 @@
-"use strict";
 import { submitCreateForm } from "../submit/submit.js";
 /* ========== CREATE DIALOG ========== */
 export function showCreateDialog() {
