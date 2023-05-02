@@ -200,6 +200,7 @@ nav{
     background-color: var(--body-background-color);
 }
 #detail-grid{
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: white;
@@ -221,7 +222,15 @@ nav{
     border-radius: 1em;
 }
 #detail-close-button{
-    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 25vw;
+}
+@media (max-width: 700px) {
+    #detail-close-button{
+        bottom: 0;
+        left: 40vw;
+    }
 }
 #detail-close-button button{
     min-width: 8em;
