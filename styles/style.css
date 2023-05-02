@@ -66,8 +66,8 @@ nav{
 #add-horse-dialog-button{
     cursor: pointer;
     position: fixed;
-    bottom: 0;
-    right: 0;
+    top: 1em;
+    right: 1em;
     z-index: 999;
     height: 2em;
     font-size: 1.5em;
