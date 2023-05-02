@@ -40,20 +40,14 @@ function fillUpdateForm(horseObj){
     form.hasTapeworm.checked = horseObj["hasTapeworm"];
 }
 function fillExperienceAndRegistrationInputs(form, horseObj) {
-    for (let i = 0; i < form.temperament.options.length; i++) {
-        const option = form.temperament.options[i];
-        if (option.value === horseObj["temperament"]) {
-            option.selected = true;
-            break;
-        }
-    }
-    for (let i = 0; i < form.trainingLevel.options.length; i++) {
-        const option = form.trainingLevel.options[i];
-        if (option.value === horseObj["trainingLevel"]) {
-            option.selected = true;
-            break;
-        }
-    }
+    const temperamentOptions = Array.from(form.temperament.options);
+    const selectedTemperamentOption = temperamentOptions.find( option => option.value === horseObj["temperament"] );
+    selectedTemperamentOption.selected = true;
+
+    const trainingLevelOptions = Array.from(form.trainingLevel.options);
+    const selectedTrainingLevelOption = trainingLevelOptions.find( option => option.value === horseObj["trainingLevel"] );
+    selectedTrainingLevelOption.selected = true;
+
     form.riderExperienceRequired.checked = horseObj["riderExperienceRequired"];
     form.registered.checked = horseObj["registered"];
 }
@@ -62,13 +56,11 @@ function fillGeneralInformationInputs(form, horseObj) {
     form.age.value = horseObj["age"];
     form.horseRace.value = horseObj["race"];
     form.horseColor.value = horseObj["color"];
-    for (let i = 0; i < form.gender.length; i++) {
-        const radioInput = form.gender[i];
-        if (radioInput.value === horseObj["gender"]) {
-            radioInput.checked = true;
-            break;
-        }
-    }
+
+    const genderRadioInputs = Array.from(form.gender);
+    const selectedGenderRadioInput = genderRadioInputs.find( input => input.value === horseObj["gender"] );
+    selectedGenderRadioInput.checked = true;
+
     form.height.value = horseObj["height"];
     form.topspeed.value = horseObj["topspeed"];
 }
