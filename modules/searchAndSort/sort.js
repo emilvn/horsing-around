@@ -1,5 +1,4 @@
-import { showHorses } from "../display/display.js";
-import { horseArr } from "../display/display.js";
+import { showHorses, horseArr } from "../display/display.js";
 
 export async function sortHorses(event) {
     const select = event.target;
