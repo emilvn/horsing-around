@@ -181,7 +181,7 @@ nav{
 
 /* ========== detail dialog tooltip ========== */
 .tooltip {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: none;

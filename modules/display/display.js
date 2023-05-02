@@ -76,14 +76,19 @@ function addShowHorseEventListeners(currentHorseArticle, horseObj) {
 /* ========== TOOLTIP FOR DETAIL DIALOG ========== */
 function addToolTip(horseArticleElement) {
     const tooltip = document.querySelector("#detail-tooltip");
-    horseArticleElement.addEventListener("mouseenter", () => {
-        tooltip.style.display = "block";
-    });
-    horseArticleElement.addEventListener("mousemove", (event) => {
+
+    function updateTooltipPos(event){
         tooltip.style.top = event.clientY - 10 + "px";
         tooltip.style.left = event.clientX + 10 + "px";
+    }
+
+    horseArticleElement.addEventListener("mouseenter", () => {
+        tooltip.style.display = "block";
+        horseArticleElement.addEventListener("mousemove", updateTooltipPos);
     });
     horseArticleElement.addEventListener("mouseleave", () => {
         tooltip.style.display = "none";
+        horseArticleElement.removeEventListener("mousemove", updateTooltipPos);
     });
+    window.addEventListener("scroll", updateTooltipPos);
 }
