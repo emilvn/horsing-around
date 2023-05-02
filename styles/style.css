@@ -86,11 +86,11 @@ nav{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-#update-form, #create-form fieldset{
+#update-form fieldset, #create-form fieldset{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-#update-form, #create-form fieldset input, select, textarea{
+#update-form fieldset input, select, textarea, #create-form fieldset input, select, textarea{
     margin: 0.5em;
 }
 #update-buttons, #create-buttons{
@@ -194,7 +194,7 @@ nav{
 }
 
 /* ========== detail dialog ========== */
-#detail-dialog{
+dialog{
     width: 75vw;
     border-radius: 1em;
     background-color: var(--body-background-color);
