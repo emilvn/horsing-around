@@ -3,11 +3,11 @@
 /* ===== Modules ===== */
 import { closeDeleteDialog } from "./modules/dialogs/deleteDialog.js";
 import { showToastMessage } from "./modules/display/toastMessage.js";
-import { updateGrid } from "./modules/display/display.js";
+import { updateGrid, filterByGender } from "./modules/display/display.js";
 import { inputSearchChanged } from "./modules/searchAndSort/search.js";
 import { showCreateDialog } from "./modules/dialogs/createDialog.js";
 import { sortHorses } from "./modules/searchAndSort/sort.js";
-import {filterByGender} from "./modules/searchAndSort/filter.js";
+
 
 window.addEventListener("load", main);
 

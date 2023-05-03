@@ -92,3 +92,16 @@ function addToolTip(horseArticleElement) {
     });
     window.addEventListener("scroll", updateTooltipPos);
 }
+
+/* ========== FILTER BY MALE/FEMALE ========== */
+export async function filterByGender(event){
+    const filterSelect = event.target;
+    await updateGrid();
+    if(filterSelect.value !== "none"){
+        horseArr = horseArr.filter(horse => horse["gender"] === filterSelect.value);
+        showHorses(horseArr);
+    }
+    else{
+        await updateGrid();
+    }
+}
