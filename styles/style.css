@@ -13,6 +13,8 @@
     --button-background-color: var(--header-color);
     --button-background-color-hover: #519444;
     --button-border-color: var(--caption-color);
+    --button-red: #e74c3c;
+    --button-yellow: #e7c53c;
 }
 html{
     width: 100%;
@@ -175,8 +177,13 @@ nav div{
 
 /* ========== grid item styling ========== */
 #horseGrid{
-    margin-top: 8em;
+    margin-top: 9em;
     max-width: 100vw;
+}
+@media (max-width: 600px) {
+    #horseGrid{
+        margin-top: 6em;
+    }
 }
 #horseGrid article{
     border-radius: 1em;
@@ -209,7 +216,20 @@ nav div{
     display: flex;
     justify-content: space-between;
 }
-
+.delete-btn{
+    background-color: var(--button-red);
+}
+.delete-btn:hover{
+    background-color: var(--button-red);
+    filter: grayscale(0.5);
+}
+.edit-btn{
+    background-color: var(--button-yellow);
+}
+.edit-btn:hover{
+    background-color: var(--button-yellow);
+    filter: grayscale(0.5);
+}
 /* ========== detail dialog tooltip ========== */
 .tooltip {
     position: fixed;
