@@ -7,6 +7,7 @@ import { updateGrid } from "./modules/display/display.js";
 import { inputSearchChanged } from "./modules/searchAndSort/search.js";
 import { showCreateDialog } from "./modules/dialogs/createDialog.js";
 import { sortHorses } from "./modules/searchAndSort/sort.js";
+import {filterByGender} from "./modules/searchAndSort/filter.js";
 
 window.addEventListener("load", main);
 
@@ -34,6 +35,10 @@ async function main() {
     /* sort horses on change in sort menu */
     document.querySelector("#sortBy")
         .addEventListener("change", sortHorses);
+
+    /* filter event listener */
+    document.querySelector("#showOnly")
+        .addEventListener("change", filterByGender);
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
