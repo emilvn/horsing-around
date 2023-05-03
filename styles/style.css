@@ -58,8 +58,9 @@ header{
 nav{
     top:5em;
     left:0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-bottom: 2px;
 }
 /* ========== nav ========== */
@@ -71,6 +72,15 @@ nav{
     z-index: 999;
     height: 2em;
     font-size: 1.5em;
+}
+@media (max-width: 600px) {
+    header{
+        text-align: left;
+    }
+    nav{
+        top: 90vh;
+        height: 10vh;
+    }
 }
 
 /* ========== dialogs ========== */
