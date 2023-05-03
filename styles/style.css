@@ -76,18 +76,25 @@ nav div{
     height: 2em;
     font-size: 1.5em;
 }
+#searchAndFilter{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 @media (max-width: 600px) {
     header{
         text-align: left;
+        height: auto;
     }
     nav{
-        top: 90vh;
-        height: 10vh;
+        top: unset;
+        padding: 5px 0 5px 0;
+        bottom: 0;
+        height: auto;
         font-size: 1em;
     }
     nav input, nav select{
         height: 3em;
-        max-width: 13em;
+        max-width: 12em;
         margin: 2px;
     }
 }

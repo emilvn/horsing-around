@@ -14,9 +14,21 @@
       <h1>Galop Galore</h1>
     </header>
     <nav>
-      <div>
-        <label for="searchBar">Search</label>
+      <div id="searchAndFilter">
+        <div>
+          <label for="searchBar">Search</label>
+        </div>
+        <div>
+          <label for="showOnly">Filter:</label>
+        </div>
         <input type="search" id="searchBar" name="searchBar" placeholder="Name/Race/Color"/>
+        <div>
+          <select name="showOnly" id="showOnly">
+            <option value="none" selected></option>
+            <option value="male">Males</option>
+            <option value="female">Females</option>
+          </select>
+        </div>
       </div>
       <div>
         <label for="sortBy">Sort by:</label>
