@@ -29,7 +29,8 @@ export function showHorse(horseObj) {
             <div>
                 <div class="image-div" style="background-image: url(${horseObj.image})"></div>
                     <h2>${horseObj.name}</h2>
-                    <p>${horseObj.age} years old ${horseObj.race} ${(horseObj.gender==="male")?"stallion":"mare"}</p>
+                    <p>${horseObj.race}</p>
+                    <p>${horseObj.age} years old ${(horseObj.gender==="male")?"stallion":"mare"}</p>
                 </div>
             <div class="grid-item-btns">
                 <span class="hidden horseID">${horseObj.id}</span>
