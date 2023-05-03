@@ -21,4 +21,6 @@ export function closeDeleteDialog() {
     deleteForm.reset();
     deleteForm.querySelector("#delete-horseID")
         .textContent = "";
+    deleteForm.querySelector("#delete-password-input")
+        .value = "";
 }
