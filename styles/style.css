@@ -63,6 +63,9 @@ nav{
     align-items: center;
     padding-bottom: 2px;
 }
+nav div{
+    margin: 0 1em 0 1em;
+}
 /* ========== nav ========== */
 #add-horse-dialog-button{
     cursor: pointer;
@@ -80,6 +83,12 @@ nav{
     nav{
         top: 90vh;
         height: 10vh;
+        font-size: 1em;
+    }
+    nav input, nav select{
+        height: 3em;
+        max-width: 13em;
+        margin: 2px;
     }
 }
 
@@ -288,6 +297,7 @@ dialog{
     left: 10px;
     display: grid;
     grid-template-columns: auto;
+    z-index: 99999;
 }
 
 .toast {
