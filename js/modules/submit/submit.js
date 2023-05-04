@@ -19,8 +19,8 @@ export async function submitCreateForm(event) {
         temperament: form.temperament.value,
         riderExperienceRequired: form.riderExperienceRequired.checked,
         registered: form.registered.checked,
-        vaccinations: form.vaccinations.value.split(", "),
-        diet: form.diet.value.split(", "),
+        vaccinations: form.vaccinations.value.replaceAll(" ", "").split(","),
+        diet: form.diet.value.replaceAll(" ","").split(","),
         trainingLevel: form.trainingLevel.value,
         owner: {
             name: form.ownerName.value,
@@ -52,8 +52,8 @@ export async function submitUpdateForm(event) {
         temperament: form.temperament.value,
         riderExperienceRequired: form.riderExperienceRequired.checked,
         registered: form.registered.checked,
-        vaccinations: form.vaccinations.value.split(", "),
-        diet: form.diet.value.split(", "),
+        vaccinations: form.vaccinations.value.replaceAll(" ", "").split(","),
+        diet: form.diet.value.replaceAll(" ","").split(","),
         trainingLevel: form.trainingLevel.value,
         owner: {
             name: form.ownerName.value,
