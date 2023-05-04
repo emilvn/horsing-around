@@ -331,9 +331,8 @@ dialog{
     display: inline-block;
     padding: 1em 2em;
     margin-bottom: 0;
-    color: #fff;
+    color: white;
     border-radius: 0.5em;
-    font-family: Arial, sans-serif;
     font-size: 1.5em;
     pointer-events: none;
 }
@@ -343,7 +342,7 @@ dialog{
 }
 
 .toast.error {
-    background-color: #e74c3c;
+    background-color: var(--button-red);
 }
 
 /* ========== footer ========== */

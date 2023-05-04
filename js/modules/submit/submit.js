@@ -83,5 +83,6 @@ async function submitDeleteForm(horseID) {
     const deleteForm = document.querySelector("#deleteForm");
     deleteForm.removeEventListener("submit", deleteHorseClicked);
     deleteForm.parentElement.close();
+    deleteForm.password.value = "";
     await deleteHorse(horseID, endpoint);
 }
