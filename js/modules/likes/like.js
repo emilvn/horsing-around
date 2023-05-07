@@ -25,7 +25,6 @@ export async function removeLike(event, likeButton, dislikeButton, horseObj) {
 //sends patch request with the updated amount of likes
 async function updateLikes(likesAmount, horseID, endpoint, button, likeType) {
     // location is "detailDialog" or "horseGrid"
-    try {
     const response = await fetch(`${endpoint}horses/${horseID}.json`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -42,9 +41,6 @@ async function updateLikes(likesAmount, horseID, endpoint, button, likeType) {
         if(likeType === "like") showToastMessage("Horse like failed", "error");
         else showToastMessage("Horse dislike failed", "error");
         console.log("Bad response at updateLikes");
-    }
-    } catch (err) {
-        throw new Error(`Error at updateLikes: ${err}`);
     }
 }
 async function displayUpdatedLikes(button, horseID){
