@@ -42,38 +42,28 @@ async function main() {
 }
 /* ========== CREATE ========== */
 export async function addHorse(horseObj, endpoint) {
-    try{
-        const response = await fetch(`${endpoint}/horses.json`, {
-            method: "POST",
-            body: JSON.stringify(horseObj),
-        });
-        if (response.ok) {
-            await updateGrid();
-            showToastMessage("Horse added, nice", "success");
-        } else {
-            showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
-            console.error(`Bad response at addHorse: ${response.status} ${response.statusText}.`);
-        }
-    }
-    catch (err){
-        throw new Error(`Error at addHorse: ${err}`);
+    const response = await fetch(`${endpoint}/horses.json`, {
+        method: "POST",
+        body: JSON.stringify(horseObj),
+    });
+    if (response.ok) {
+        await updateGrid();
+        showToastMessage("Horse added, nice", "success");
+    } else {
+        showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
+        console.error(`Bad response at addHorse: ${response.status} ${response.statusText}.`);
     }
 }
 /* ========== READ ALL========== */
 export async function getHorses(endpoint) {
-    try{
-        const response = await fetch(`${endpoint}/horses.json`);
-        if(response.ok){
-            const data = await response.json();
-            return prepareData(data);
-        }
-        else{
-            showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
-            console.error(`Bad response at getHorses: ${response.status} ${response.statusText}.`);
-        }
+    const response = await fetch(`${endpoint}/horses.json`);
+    if(response.ok){
+        const data = await response.json();
+        return prepareData(data);
     }
-    catch (err){
-        throw new Error(`Error at getHorses: ${err}`);
+    else{
+        showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
+        console.error(`Bad response at getHorses: ${response.status} ${response.statusText}.`);
     }
 }
 /* ========== Data preparation for getHorses ========== */
@@ -88,58 +78,45 @@ function prepareData(obj) {
 }
 /* ========== READ ONE ========== */
 export async function getOneHorse(horseID, endpoint) {
-    try {
-        const response = await fetch(`${endpoint}horses/${horseID}.json`);
-        if (response.ok) {
-            const horse = await response.json();
-            horse["id"] = horseID;
-            return horse;
-        }
-        else{
-            showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
-            console.error(`Bad response at getOneHorse: ${response.status} ${response.statusText}.`);
-        }
-    } catch (err) {
-        throw new Error(`Error at getOneHorse: ${err}`);
+    const response = await fetch(`${endpoint}horses/${horseID}.json`);
+    if (response.ok) {
+        const horse = await response.json();
+        horse["id"] = horseID;
+        return horse;
+    }
+    else{
+        showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
+        console.error(`Bad response at getOneHorse: ${response.status} ${response.statusText}.`);
     }
 }
 /* ========== UPDATE ========== */
 // Sends put request to endpoint with horse object
 export async function updateHorse(horse, horseID, endpoint) {
-    try {
-        const response = await fetch(`${endpoint}horses/${horseID}.json`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(horse),
-        });
-        if (response.ok) {
-            console.log("Horse updated successfully!");
-            showToastMessage("Horse updated successfully!", "success");
-        } else {
-            showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
-            console.error(`Bad response at updateHorse: ${response.status} ${response.statusText}.`);
-        }
-    } catch (err) {
-        throw new Error(`Error at updateHorse: ${err}`);
+    const response = await fetch(`${endpoint}horses/${horseID}.json`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(horse),
+    });
+    if (response.ok) {
+        console.log("Horse updated successfully!");
+        showToastMessage("Horse updated successfully!", "success");
+    } else {
+        showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
+        console.error(`Bad response at updateHorse: ${response.status} ${response.statusText}.`);
     }
 }
 
 /* ========== DELETE ========== */
 export async function deleteHorse(horseID, endpoint) {
-    try{
-        const response = await fetch(`${endpoint}/horses/${horseID}.json`, {
-            method: "DELETE",
-        });
-        if (response.ok) {
-            console.log("horse deleted");
-            showToastMessage("Horse deleted successfully!", "success");
+    const response = await fetch(`${endpoint}/horses/${horseID}.json`, {
+        method: "DELETE",
+    });
+    if (response.ok) {
+        console.log("horse deleted");
+        showToastMessage("Horse deleted successfully!", "success");
         await updateGrid();
-        } else {
-            showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
-            console.error(`Bad response at deleteHorse: ${response.status} ${response.statusText}.`);
-        }
-    }
-    catch (err){
-        throw new Error(`Error at deleteHorse: ${err}`);
+    } else {
+        showToastMessage(`Oops something went wrong. ${response.status} ${response.statusText}.`, "error");
+        console.error(`Bad response at deleteHorse: ${response.status} ${response.statusText}.`);
     }
 }
